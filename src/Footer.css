@@ -1,0 +1,10 @@
+.footer-link {
+  text-decoration: none;
+  color: inherit;
+  text-align:start!important;
+}
+
+.footer-link:hover {
+  text-decoration: underline; /* Add your desired hover effect here */
+  color: grey; /* Change the color on hover, if needed */
+}
