@@ -1,11 +1,11 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useInView } from 'react-intersection-observer';
 import team_work from '../src/Images/team.jpg';
 
 
 function Whoweare() {
-  const ImageStyle = { width: '70%' };
+  const ButtonStyle = { color: 'white', backgroundColor: '#5FA0FF', border: 'none' };
   const TextStyle = { fontSize: '20px' };
   const TextStyleH = { fontSize: '32px' };
 
@@ -21,16 +21,18 @@ function Whoweare() {
   };
 
   return (
-    <Container className="Description mt-5 pt-5 pb-5 mb-5">
+    <Container className="Description mt-5 pt-5 pb-5 mb-5 ">
       <Row ref={aboutRef} style={transitionStyle}>
         <Col lg={6}>
           <h1 className="mt-2 pt-2 text-start" style={TextStyleH}>About Us</h1>
           <p className="text-start pt-4" style={TextStyle}>
             At <strong>Khedemni</strong>, we believe in breaking down traditional employment barriers and creating a flexible, inclusive job market that caters to both remote workers and students. Our mission is to connect talented individuals with meaningful employment opportunities that fit their lifestyles, allowing them to achieve a healthy work-life balance while gaining valuable experience and financial independence.
           </p>
+          <Button variant="primary" className="w-25 mt-3 mb-3" style={ButtonStyle}>Join Us</Button>
         </Col>
         <Col lg={6}>
-          <img src={team_work} alt="My Work" className="shadow-lg img-fluid rounded bg-body " style={ImageStyle} />
+          <img src={team_work} alt="My Work" className="shadow-lg img-fluid rounded bg-body "  />
+          
         </Col>
       </Row>
     </Container>

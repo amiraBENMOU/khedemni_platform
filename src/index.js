@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Home from './Pages/Home';
-import OurOpertunities from './Pages/Ouropertunities'; 
+import OurOpertunities from './Pages/ouropertunities'; 
+import Remote from './Pages/remote/Remote';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -16,8 +17,8 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "ourOpertunities",
-    element: <OurOpertunities/>,
+    path: "/remote",
+    element: <Remote/>,
   },
 ]);
 
