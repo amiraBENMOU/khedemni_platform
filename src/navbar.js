@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Opertunities from './Opertunities';
 import { MdOutlineDarkMode, MdDarkMode } from 'react-icons/md';
-import { useLocation } from 'react-router-dom';
 import '../src/Pages/App.css';
-
 
 function Navbar_khedmouni() {
   const navItemStyle = { fontSize: '20px' };
   const [darkMode, setDarkMode] = useState(false);
-  const [colorMode,setColorMode] =useState('white');
 
   const location = useLocation(); // Get the current path
 
   const toggleLightDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
+
+//sign up sign out function 
+const [signupText, setSignupText] = useState('Sign Up');
+
+const toggleSignup = () => {
+  setSignupText((prevText) => (prevText === 'Sign Up' ? 'Sign Out' : 'Sign Up'));
+};
+
 
   return (
     <div className="Navbar shadow-sm bg-white rounded sticky-top">
@@ -28,16 +33,16 @@ function Navbar_khedmouni() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link
-                href="#home"
+                href="/"
                 style={{
                   ...navItemStyle,
-                  color: location.hash === "#home" ? "#5FA0FF" : "black" ,
+                  color: location.pathname === "/" ? "#5FA0FF" : "black", // Highlight when on Home page
                 }}
               >
                 Home
               </Nav.Link>
               <Nav.Link
-                href="#opportunities" // In-page navigation
+                href="#opportunities"
                 style={{
                   ...navItemStyle,
                   color: location.hash === "#opportunities" ? "#5FA0FF" : "black",
@@ -59,12 +64,13 @@ function Navbar_khedmouni() {
               </Nav.Link>
               <Nav.Link
                 href="#signup"
+                onClick={toggleSignup} // Toggle text on click
                 style={{
-                  ...navItemStyle,
-                  color: location.hash === "#signup" ? "#5FA0FF" : "black",
+                  ...navItemStyle
                 }}
               >
-                Sign Up
+             {signupText}
+
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

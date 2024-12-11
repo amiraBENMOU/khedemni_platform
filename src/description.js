@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useInView } from 'react-intersection-observer'; // Import the hook
-import work from './work.png';
+import work from './assets/Images/work.png';
 import Typewriter from './Typewriter';
 
 function Description_khedmouni() {

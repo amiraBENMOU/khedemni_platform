@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useInView } from 'react-intersection-observer';
-import team_work from '../src/Images/team.jpg';
+import team_work from './assets/Images/team.jpg';
 
 
 function Whoweare() {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import remote from '../src/Images/remote.png';
+import remote from './assets/Images/remote.png';
 import { useNavigate } from 'react-router-dom';
 
 function Opertunities() {

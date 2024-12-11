@@ -7,6 +7,7 @@ import OurPartners from '../ourPartners';
 import Whoweare from '../whoWeAre';
 import Opertunities from '../Opertunities';
 import Footer from '../footer';
+import Contact from '../contactUs';
 
 
 
@@ -24,6 +25,7 @@ function Home() {
       <Whoweare />
       <Opertunities />
       <OurPartners/>
+      <Contact/>
       <Footer />
       
 
