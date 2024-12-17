@@ -7,7 +7,7 @@ import team_work from './assets/Images/team.jpg';
 function Whoweare() {
   const ButtonStyle = { color: 'white', backgroundColor: '#5FA0FF', border: 'none' };
   const TextStyle = { fontSize: '20px' };
-  const TextStyleH = { fontSize: '32px' };
+  const TextStyleH = { fontSize: '36px' };
 
   const { ref: aboutRef, inView: aboutInView } = useInView({
     triggerOnce: true,

@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import remote from './assets/Images/remote.png';
+//import remote from './assets/Images/remote.png';
+import remote from './assets/Images/remoteJob.jpg';
+import partTime from './assets/Images/partTimeJob.jpg';
+import internships from './assets/Images/intership.jpg';
 import { useInView } from 'react-intersection-observer'; // Import the hook
 import { useNavigate } from 'react-router-dom';
+import { TbBackground } from 'react-icons/tb';
 
 function Opertunities() {
+  const TextStyle = { fontSize: '20px' };
+  const TextStyleH = { fontSize: '36px' };
 
   // Intersection Observer hook
   const { ref: containerRef, inView } = useInView({
@@ -23,16 +29,26 @@ function Opertunities() {
   const [hoveredElement, setHoveredElement] = useState(null); // Track the hovered element
 
   const getHoverStyle = (elementName) => ({
-    fontSize: '20px',
     fontWeight: 'bold',
-    color: hoveredElement === elementName ? '#5FA0FF' : '#000000', // Unique hover behavior
+    color: hoveredElement === elementName ? '#5FA0FF' : '#808080', // Unique hover behavior
     padding: '10px 20px',
     borderRadius: '5px',
     cursor: 'pointer',
     transition: 'color 0.3s ease',
+    ... TextStyle,
   });
 
-
+  //hover image 
+  const [hoveredImage, setHoveredImage] = useState(null); // Track the hovered element
+  
+  const getImageHoverStyle = (elementName) => ({
+    background: hoveredImage === elementName ? 'rgba(251, 251, 251, 0.35)' : '', // Unique hover behavior
+    transform: hoveredImage === elementName ? 'scale(1.05)' : 'scale(1)', // Slight zoom effec
+    transition: 'transform 0.3s ease-in-out, background 0.3s ease', // Add transition for background
+    cursor: 'pointer', // Pointer cursor on hover
+  });
+  
+//navigate 
   const navigate = useNavigate();
 
   const handleRemoteJobClick = () => {
@@ -45,15 +61,19 @@ function Opertunities() {
          style={transitionStyle} 
          >
       <Row>
-        <h1 className="mt-2 pt-3 text-start">Our Opportunities</h1>
+        <h1 className="mt-2 pt-3 text-start" style={TextStyleH}>Our Opportunities</h1>
 
         <Col lg={4}>
           <img
             src={remote}
-            alt="Remote Jobs"
-            className="img-fluid shadow rounded bg-body mt-5 pt-3"
+            alt="Part-Time Jobs"
+            className="img-fluid  shadow rounded bg-body mt-5 pt-3 "
+            style={getImageHoverStyle('remote')} // Add dynamic hover styles
+            onMouseEnter={() => setHoveredImage('remote')}
+            onMouseLeave={() => setHoveredImage(null)}
             onClick={handleRemoteJobClick}
           />
+
           <p
             style={getHoverStyle('remote')}
             className="mt-3 pt-3 text-center"
@@ -67,34 +87,48 @@ function Opertunities() {
 
         <Col lg={4}>
           <img
-            src={remote}
-            alt="Part-Time Jobs"
-            className="img-fluid  shadow rounded bg-body mt-5 pt-3"
+           src={partTime}
+           alt="Part-Time Jobs"
+           className="img-fluid  shadow rounded bg-body mt-5 pt-3 "
+           style={getImageHoverStyle('partTime')} // Add dynamic hover styles
+           onMouseEnter={() => setHoveredImage('partTime')}
+           onMouseLeave={() => setHoveredImage(null)}
+           onClick={handleRemoteJobClick}
+
           />
+        
           <p
-            style={getHoverStyle('partTime')}
-            className="mt-3 pt-3 text-center"
-            onMouseEnter={() => setHoveredElement('partTime')}
-            onMouseLeave={() => setHoveredElement(null)}
+             style={getHoverStyle('partTime')}
+             className="mt-3 pt-3 text-center"
+             onMouseEnter={() => setHoveredElement('partTime')}
+             onMouseLeave={() => setHoveredElement(null)}
+             onClick={handleRemoteJobClick}
           >
             Part-Time Jobs
           </p>
         </Col>
 
-        <Col lg={4}>
+        <Col lg={4} >
           <img
-            src={remote}
-            alt="Internships"
-            className="img-fluid shadow rounded bg-body mt-5 pt-3"
+          src={internships}
+          alt="Part-Time Jobs"
+          className="img-fluid  shadow rounded bg-body mt-5 pt-3 "
+          style={getImageHoverStyle('intership')} // Add dynamic hover styles
+          onMouseEnter={() => setHoveredImage('intership')}
+          onMouseLeave={() => setHoveredImage(null)}
+          onClick={handleRemoteJobClick}
+
           />
           <p
-            style={getHoverStyle('internships')}
-            className="mt-3 pt-3 text-center"
-            onMouseEnter={() => setHoveredElement('internships')}
-            onMouseLeave={() => setHoveredElement(null)}
-          >
+             style={getHoverStyle('intership')}
+             className="mt-3 pt-3 text-center"
+             onMouseEnter={() => setHoveredElement('intership')}
+             onMouseLeave={() => setHoveredElement(null)}
+             onClick={handleRemoteJobClick}             
+             >
             Internships
           </p>
+          
         </Col>
       </Row>
     </Container>

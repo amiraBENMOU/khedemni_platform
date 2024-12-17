@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import logo1 from './assets/Images/logo1.png';
-import logo3 from './assets/Images/logo3.png';
+import oredoo from './assets/Images/ooredoo.png';
+import yassir from './assets/Images/yassir.png';
+import devteam from './assets/Images/devteam.png';
+
 import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer'; // Import the hook
 
 function OurPartners() {
+  const TextStyle = { fontSize: '20px' };
+  const TextStyleH = { fontSize: '36px' };
+
    // Intersection Observer hook
     const { ref: containerRef, inView } = useInView({
       triggerOnce: true, // Trigger animation only once
@@ -29,11 +34,11 @@ function OurPartners() {
     style={transitionStyle} 
     >
       <Row>
-        <h1 className="mt-2 pt-3 text-start">Our Partners</h1>
+        <h1 className="mt-2 pt-3 text-start" style={TextStyleH}>Our Partners</h1>
 
         <Col lg={4}>
           <img
-            src={logo1}
+            src={oredoo}
             alt=""
             className="img-fluid shadow rounded bg-body mt-5 pt-3 w-50"
           />
@@ -42,7 +47,7 @@ function OurPartners() {
 
         <Col lg={4}>
           <img
-            src={logo3}
+            src={yassir}
             alt=""
             className="img-fluid shadow rounded bg-body mt-5 pt-3 w-50"
           />
@@ -52,7 +57,7 @@ function OurPartners() {
         
         <Col lg={4}>
           <img
-            src={logo3}
+            src={devteam}
             alt=""
             className="img-fluid shadow rounded bg-body mt-5 pt-3 w-50"
           />
