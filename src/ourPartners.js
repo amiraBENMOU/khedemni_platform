@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import oredoo from './assets/Images/ooredoo.png';
 import yassir from './assets/Images/yassir.png';
-import devteam from './assets/Images/devteam.png';
+import djezzy from './assets/Images/Djezzy.png';
+import {Card,CardMedia,Button,Typography,CardActions} from '@mui/material';
+import CardContent from '@mui/material/CardContent';
+
 
 import { useNavigate } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer'; // Import the hook
@@ -29,43 +32,84 @@ function OurPartners() {
 
 
   return (
-    <Container className="Opertunities mt-5 pt-5 mb-3 pb-3 text-center"
+    <Container className="OurPartners mt-5 pt-5 pb-5 mb-5"
     ref={containerRef}  
     style={transitionStyle} 
     >
       <Row>
-        <h1 className="mt-2 pt-3 text-start" style={TextStyleH}>Our Partners</h1>
+        <h1 className="mt-2 pt-3 text-start mb-3 pb-5" style={TextStyleH}>Our Partners</h1>
+        <Col lg={4}>
+            <Card sx={{ maxWidth:'100%', elevation:24 ,backgroundColor: '#F8FAFC'}}>
+               <CardMedia
+                  component="img"
+                 alt="green iguana"
+                 sx={{ width: 150, height: 150, objectFit: 'contain', margin: 'auto' }}
+                 image={yassir}
+                 />
+               <CardContent>
+                 <Typography variant="body2" sx={{ color: 'text.secondary' }} >
+                     Lizards are a widespread group of squamate reptiles, with over 6,000
+                    species, ranging across all continents except Antarctica
+                  </Typography>
+               </CardContent>
+               <CardActions>
+                   <Button size="small">Share</Button>
+                  <Button size="small">Learn More</Button>
+             </CardActions>
+           </Card>
+        </Col>
+          
+        
 
         <Col lg={4}>
-          <img
-            src={oredoo}
-            alt=""
-            className="img-fluid shadow rounded bg-body mt-5 pt-3 w-50"
-          />
-          
+            <Card sx={{ maxWidth:'100%', elevation: 24 ,backgroundColor: '#F8FAFC' }}>
+               <CardMedia
+                  component="img"
+                 alt="green iguana"
+                 sx={{ width: 150, height: 150, objectFit: 'contain', margin: 'auto' }}
+                 image={djezzy}
+                 />
+               <CardContent>
+                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                     Lizards are a widespread group of squamate reptiles, with over 6,000
+                    species, ranging across all continents except Antarctica
+                  </Typography>
+               </CardContent>
+               <CardActions>
+                   <Button size="small">Share</Button>
+                  <Button size="small">Learn More</Button>
+             </CardActions>
+           </Card>
         </Col>
-
-        <Col lg={4}>
-          <img
-            src={yassir}
-            alt=""
-            className="img-fluid shadow rounded bg-body mt-5 pt-3 w-50"
-          />
-          
-        </Col>
-
         
         <Col lg={4}>
-          <img
-            src={devteam}
-            alt=""
-            className="img-fluid shadow rounded bg-body mt-5 pt-3 w-50"
-          />
-          
+            <Card sx={{ maxWidth:'100%', elevation: 24 ,backgroundColor: '#F8FAFC' }}>
+               <CardMedia
+                  component="img"
+                 alt="green iguana"
+                 sx={{ width: 150, height: 150, objectFit: 'contain', margin: 'auto' }}
+                 image={oredoo}
+                 />
+               <CardContent>
+                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                     Lizards are a widespread group of squamate reptiles, with over 6,000
+                    species, ranging across all continents except Antarctica
+                  </Typography>
+               </CardContent>
+               <CardActions>
+                   <Button size="small">Share</Button>
+                  <Button size="small">Learn More</Button>
+             </CardActions>
+           </Card>
         </Col>
+       
+      
+      
+
 
       </Row>
     </Container>
+    
   );
 }
 

@@ -9,7 +9,7 @@ function Contact() {
     return (
      <Container className="Contact mt-5 pt-5 mb-3 pb-3">
          <Row>
-               <h1 className="mt-2 pt-3 text-start">Watch This Video To Know More About Us </h1>
+               <h1 className="mt-2 pt-3 text-start"> Contact Us </h1>
             
          </Row>  
     </Container> 
