@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux'; // Import the Provider
+import store from './state/store'; // Import the Redux store
 import Home from './Pages/Home';
-import OurOpertunities from './Opertunities';
 import Remote from './Pages/remote/Remote';
 import reportWebVitals from './reportWebVitals';
+
+
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 
-// to integrate  our router in our application
-
+// Configure the router
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,16 +20,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/remote",
-    element: <Remote/>,
+    element: <Remote />,
   },
 ]);
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}> {/* Wrap the application with the Provider */}
+    <React.StrictMode>
       <RouterProvider router={router} />
-  </React.StrictMode>
+    </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
