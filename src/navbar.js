@@ -5,12 +5,24 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { MdOutlineDarkMode, MdDarkMode } from 'react-icons/md';
 import '../src/Pages/App.css';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function Navbar_khedmouni() {
+  
+//navigate 
+const navigate = useNavigate();
+//
+const handleAdminClick = () => {
+  navigate('/admin');
+};
+
   const navItemStyle = { fontSize: '20px' };
   const [darkMode, setDarkMode] = useState(false);
 
   const location = useLocation(); // Get the current path
+    
 
   const toggleLightDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
@@ -22,6 +34,9 @@ const [signupText, setSignupText] = useState('Sign Up');
 const toggleSignup = () => {
   setSignupText((prevText) => (prevText === 'Sign Up' ? 'Sign Out' : 'Sign Up'));
 };
+
+
+
 
 
   return (
@@ -58,6 +73,16 @@ const toggleSignup = () => {
                 }}
               >
                 Contact Us
+              </Nav.Link>
+              <Nav.Link
+              href="/admin"
+                style={{
+                  ...navItemStyle,
+                  color: location.pathname === "/admin" ? "#5FA0FF" : "black",
+                }}
+                onClick={handleAdminClick}
+              >
+                Admin
               </Nav.Link>
               <Nav.Link onClick={toggleLightDarkMode} style={navItemStyle}>
                 {darkMode ? <MdDarkMode /> : <MdOutlineDarkMode />}

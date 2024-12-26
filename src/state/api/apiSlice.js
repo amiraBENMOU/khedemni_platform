@@ -4,15 +4,23 @@ export const apiSlice = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:50000' }),
     endpoints: (builder) => ({
+        //create Contact 
         createContact: builder.mutation({
             query: (contact) => ({
-              //all the problem was here ! 
                 url: '/contact/createContact',
                 method: 'POST',
                 body: contact,
             }),
         }),
+        //filter  Contacts 
+        getContacts: builder.query({
+            query: () => ({
+                url: '/contact/getContacts', // Ensure the URL is correct
+                method: 'GET',
+            }),
+        }),
+        
     }),
 });
 
-export const { useCreateContactMutation } = apiSlice;
+export const { useCreateContactMutation, useGetContactsQuery } = apiSlice;

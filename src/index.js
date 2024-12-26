@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'; // Import the Provider
 import store from './state/store'; // Import the Redux store
 import Home from './Pages/Home';
 import Remote from './Pages/remote/Remote';
+import Admin_component from './Pages/admin/Admin';
 import reportWebVitals from './reportWebVitals';
 
 
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
     path: "/remote",
     element: <Remote />,
   },
+  {
+    path: "/admin",
+    element: <Admin_component/>,
+  },
+
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
