@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { useGetContactsQuery } from '../../state/api/apiSlice';
 import Navbar_khedmouni from '../../navbar';
+import apiSlice from '../../state/api/apiSlice';
+import { getContactUrl } from '';
+
 
 function Admin_component() {
+    const navigate = useNavigate();
     const { data: contacts, error, isLoading } = useGetContactsQuery();
     const [searchName, setSearchName] = useState('');
     const [searchEmail, setSearchEmail] = useState('');
@@ -14,6 +18,11 @@ function Admin_component() {
     const handleEmailChange = (e) => {
         setSearchEmail(e.target.value);
     };
+
+    const getContactReport = () => {
+        const url = getContactUrl(exerciceId, token);
+        return window.open(url);
+      };
 
     const filteredContacts = contacts?.filter(contact => 
         (searchName === '' || contact.fullName.toLowerCase().includes(searchName.toLowerCase())) &&
@@ -33,8 +42,8 @@ function Admin_component() {
                     <input
                         type="text"
                         placeholder="Search by Name"
-                        value={searchName}
-                        onChange={handleNameChange}
+                       value={searchName}
+                       onChange={handleNameChange}
                     />
                 </label>
                 <label>
@@ -42,17 +51,18 @@ function Admin_component() {
                     <input
                         type="text"
                         placeholder="Search by Email"
-                        value={searchEmail}
+                       value={searchEmail}
                         onChange={handleEmailChange}
                     />
                 </label>
             </div>
             <ul>
-                {filteredContacts?.map(contact => (
+                
                     <li key={contact.id}>
                         {contact.fullName} - {contact.email} - {contact.content}
+                        <button onClick={() => handleDownloadPdf(contact.id)}> Download PDF </button>
                     </li>
-                ))}
+            
             </ul>
         </div>
     );

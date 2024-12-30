@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { BASE_API_URL } from "../../config/api";
+
 
 export const apiSlice = createApi({
     reducerPath: 'api',
@@ -21,6 +23,12 @@ export const apiSlice = createApi({
         }),
         
     }),
+
+    
+ getContactReportUrl: (contactId, reportType) =>
+    `${BASE_API_URL}/contact/${contactId}/report?type=${reportType}&token=${token}`,
+
 });
 
-export const { useCreateContactMutation, useGetContactsQuery } = apiSlice;
+
+export const { useCreateContactMutation, useGetContactsQuery,getContactReportUrl } = apiSlice;
