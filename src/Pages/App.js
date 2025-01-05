@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from '../Pages/Home'; // Import the Home component
 import Remote from '../Pages/remote/Remote'; // Import the Remote component
-import Admin_component from '../Pages/admin/Admin'; // Import the Admin component
+import Admin_component from './Admin/Admin'; // Import the Admin component
 
 function App() {
   return (

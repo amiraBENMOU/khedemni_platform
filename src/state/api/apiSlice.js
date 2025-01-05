@@ -1,12 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { BASE_API_URL } from "../../config/api";
-
+const BASE_API_URL ="http://localhost:50000";
 
 export const apiSlice = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:50000' }),
     endpoints: (builder) => ({
-        //create Contact 
         createContact: builder.mutation({
             query: (contact) => ({
                 url: '/contact/createContact',
@@ -14,21 +12,29 @@ export const apiSlice = createApi({
                 body: contact,
             }),
         }),
-        //filter  Contacts 
         getContacts: builder.query({
             query: () => ({
-                url: '/contact/getContacts', // Ensure the URL is correct
+                url: '/contact/getContacts',
                 method: 'GET',
             }),
         }),
-        
+        updateContact: builder.mutation({
+            query: ({ id, ...contact }) => ({
+                url: `/contact/updateContact/${id}`,
+                method: 'PUT',
+                body: contact,
+            }),
+        }),
     }),
-
-    
- getContactReportUrl: (contactId, reportType) =>
-    `${BASE_API_URL}/contact/${contactId}/report?type=${reportType}&token=${token}`,
-
 });
+export const { useCreateContactMutation, useGetContactsQuery, useUpdateContactMutation } = apiSlice;
+  
+export const getContactReportUrl = (
+    contactId, 
+    
+) =>{
+    console.log("contactId", contactId)
+    return  `http://localhost:50000/contact/${contactId}/report`;
+}
+   
 
-
-export const { useCreateContactMutation, useGetContactsQuery,getContactReportUrl } = apiSlice;
