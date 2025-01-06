@@ -20,14 +20,20 @@ export const apiSlice = createApi({
         }),
         updateContact: builder.mutation({
             query: ({ id, ...contact }) => ({
-                url: `/contact/updateContact/${id}`,
+                url: `/contact/${id}/updateContact`,
                 method: 'PUT',
                 body: contact,
             }),
         }),
+        deleteContact: builder.mutation({
+            query: (id) => ({
+                url: `/contact/${id}/deleteContact`,
+                method: 'DELETE',
+            }),
+        }),
     }),
 });
-export const { useCreateContactMutation, useGetContactsQuery, useUpdateContactMutation } = apiSlice;
+export const { useCreateContactMutation, useGetContactsQuery, useUpdateContactMutation,useDeleteContactMutation  } = apiSlice;
   
 export const getContactReportUrl = (
     contactId, 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGetContactsQuery } from '../../state/api/apiSlice';
+import { useGetContactsQuery, useDeleteContactMutation } from '../../state/api/apiSlice';
 import Navbar_khedmouni from '../../navbar';
 import { useNavigate ,useParams} from 'react-router-dom';
 import { getContactReportUrl } from '../../state/api/apiSlice';
@@ -10,6 +10,7 @@ function Admin_component() {
     const navigate = useNavigate();
     const { id } = useParams();
     const { data: contacts, error, isLoading } = useGetContactsQuery();
+    const [deleteContact] = useDeleteContactMutation();
     const [searchName, setSearchName] = useState('');
     const [searchEmail, setSearchEmail] = useState('');
 
@@ -21,6 +22,16 @@ function Admin_component() {
         setSearchEmail(e.target.value);
     };
     
+    const handleDeleteClick = async (contactId) => {
+        try {
+            await deleteContact(contactId).unwrap();
+            alert('Contact deleted successfully!');
+        } catch (err) {
+            console.error('Failed to delete contact:', err);
+            alert('Failed to delete contact.');
+        }
+    };
+
     /**
  * Get  Report for a specific contact
  * @param {String} token
@@ -70,6 +81,7 @@ function Admin_component() {
                     <li key={contact.id}>
                         {contact.fullName} - {contact.email} - {contact.content}
                         <button onClick={() => getContactReport(contact)}>Download PDF</button>
+                        <button onClick={() => handleDeleteClick(contact._id)}>Delete</button>
   
                     </li>
             ))}
