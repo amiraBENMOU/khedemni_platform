@@ -5,6 +5,8 @@ import store from './state/store'; // Import the Redux store
 import Home from './Pages/Home';
 import Remote from './Pages/remote/Remote';
 import Admin_component from './Pages/admin/Admin';
+import SignIn from './Pages/account/signIn';
+import SignUp from './Pages/account/signUp';
 import reportWebVitals from './reportWebVitals';
 
 
@@ -26,6 +28,15 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin_component/>,
+  },
+  {
+    path: "/signIn",
+    element: <SignIn/>,
+  },
+
+{
+    path: "/signUp",
+    element: <SignUp/>,
   },
 
 ]);

@@ -135,10 +135,12 @@ function Contact() {
                             <Form.Control.Feedback type="valid">
                                 {valid.content}
                             </Form.Control.Feedback>
-                        </Form.Group>
+                            </Form.Group>
+                        {serverError && <div className="text-danger mb-3">{serverError}</div>}
                         <Button variant="primary" type="submit" disabled={isLoading}>
                             Submit
                         </Button>
+                    
                     </Form>
                 </Col>
             </Row>

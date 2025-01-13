@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { redirect, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { useNavigate } from 'react-router-dom';
 import { MdOutlineDarkMode, MdDarkMode } from 'react-icons/md';
 import '../src/Pages/App.css';
-import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -29,11 +30,12 @@ const handleAdminClick = () => {
   };
 
 //sign up sign out function 
-const [signupText, setSignupText] = useState('Sign Up');
+const [signinText, setSigninText] = useState('Sign in');
 
-const toggleSignup = () => {
-  setSignupText((prevText) => (prevText === 'Sign Up' ? 'Sign Out' : 'Sign Up'));
+const handleSignInClick = () => {
+  navigate('/signin');
 };
+
 
 
 
@@ -88,13 +90,12 @@ const toggleSignup = () => {
                 {darkMode ? <MdDarkMode /> : <MdOutlineDarkMode />}
               </Nav.Link>
               <Nav.Link
-                href="#signup"
-                onClick={toggleSignup} // Toggle text on click
+                onClick={handleSignInClick} // Toggle text on click
                 style={{
                   ...navItemStyle
                 }}
               >
-             {signupText}
+           <Button variant="primary">{signinText}</Button> 
 
               </Nav.Link>
             </Nav>

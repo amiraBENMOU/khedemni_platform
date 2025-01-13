@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-const BASE_API_URL ="http://localhost:50000";
+
 
 export const apiSlice = createApi({
     reducerPath: 'api',
@@ -31,9 +31,32 @@ export const apiSlice = createApi({
                 method: 'DELETE',
             }),
         }),
-    }),
+        //signIn and signUp
+        signUp: builder.mutation({
+            query: (userData) => ({
+                url: '/user/signUp',
+                method: 'POST',
+                body: userData,
+            }),
+        }),
+        signIn: builder.mutation({
+            query: (userData) => ({
+                url: '/user/signIn',
+                method: 'POST',
+                body: userData,
+            }),
+            async onQueryStarted(arg, { queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+                    localStorage.setItem('token', data.token);
+                } catch (error) {
+                    console.error('Failed to sign in:', error);
+                }
+            },
+        }),
+        }),
 });
-export const { useCreateContactMutation, useGetContactsQuery, useUpdateContactMutation,useDeleteContactMutation  } = apiSlice;
+export const { useCreateContactMutation, useGetContactsQuery, useUpdateContactMutation,useDeleteContactMutation , useSignUpMutation, useSignInMutation  } = apiSlice;
   
 export const getContactReportUrl = (
     contactId, 
