@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { redirect, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -18,6 +18,12 @@ const navigate = useNavigate();
 const handleAdminClick = () => {
   navigate('/admin');
 };
+//useEffect
+useEffect(() => {
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  setSigninText(isAuthenticated ? 'Sign Out' : 'Sign In');
+}, []);
+
 
   const navItemStyle = { fontSize: '20px' };
   const [darkMode, setDarkMode] = useState(false);
@@ -33,7 +39,16 @@ const handleAdminClick = () => {
 const [signinText, setSigninText] = useState('Sign in');
 
 const handleSignInClick = () => {
-  navigate('/signin');
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+    if (isAuthenticated) {
+      localStorage.removeItem('userName');
+      localStorage.removeItem('isAuthenticated');
+      setSigninText('Sign In');
+      navigate('/signIn');
+    } else {
+      setSigninText('Sign Out');
+      navigate('/signIn');
+    }
 };
 
 

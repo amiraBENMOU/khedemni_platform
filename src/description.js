@@ -8,6 +8,7 @@ function Description_khedmouni() {
   const TextStyle = { fontSize: '26px' };
   const ColorStyle = { color: 'black', fontWeight: 'bold' };
   const ColorStyle2 = { color: 'black', fontWeight: 'normal' };
+  const fullName = localStorage.getItem('fullName');
 
   // Intersection Observer hook
   const { ref: containerRef, inView } = useInView({
@@ -31,7 +32,7 @@ function Description_khedmouni() {
       <Row>
         <Col lg={6}>
           <p className="mt-5 pt-5 text-start" style={TextStyle}>
-            <span style={ColorStyle}>Welcome to Khedemni Platform | </span>
+            <span style={ColorStyle}> {fullName ? `, ${fullName}` : ''} Welcome to Khedemni Platform | </span>
             <Typewriter
               text="where you find the job that will help building your career"
               delay={100}

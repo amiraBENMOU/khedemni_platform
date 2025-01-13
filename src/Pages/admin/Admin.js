@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useGetContactsQuery, useDeleteContactMutation } from '../../state/api/apiSlice';
 import Navbar_khedmouni from '../../navbar';
 import { useNavigate ,useParams} from 'react-router-dom';
@@ -13,6 +13,23 @@ function Admin_component() {
     const [deleteContact] = useDeleteContactMutation();
     const [searchName, setSearchName] = useState('');
     const [searchEmail, setSearchEmail] = useState('');
+    const [userContacts, setUserContacts] = useState([]);
+
+//fetch data 
+    useEffect(() => {
+        const fetchUserContacts = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/contact/fetchUserContact');
+                const data = await response.json();
+                setUserContacts(data);
+            } catch (error) {
+                console.error('Failed to fetch user contacts:', error);
+            }
+        };
+
+        fetchUserContacts();
+    }, []);
+
 
     const handleNameChange = (e) => {
         setSearchName(e.target.value);
@@ -86,7 +103,25 @@ function Admin_component() {
                     </li>
             ))}
             </ul>
+            <h1>Users that are signed in and have written an email in Contact Us</h1>
+            <ul>
+                {userContacts.map(user => (
+                    <li key={user._id}>
+                        {user.fullName} - {user.email}
+                        <ul>
+                            {user.contacts.map(contact => (
+                                <li key={contact.contactId}>
+                                    {contact.content}
+                                </li>
+                            ))}
+                     </ul>
+                    </li>
+                ))}
+           </ul>
+
         </div>
+
+        
     );
 }
 

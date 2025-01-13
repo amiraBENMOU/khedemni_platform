@@ -31,6 +31,13 @@ export const apiSlice = createApi({
                 method: 'DELETE',
             }),
         }),
+        // fetchUsersWithContacts: builder.mutation({
+          //  query: () => ({
+              //  url: '/contact//fetchUserContact',
+              //  method: 'GET',
+         //   }),
+       // }),
+
         //signIn and signUp
         signUp: builder.mutation({
             query: (userData) => ({
