@@ -1,16 +1,11 @@
-import React from 'react';
-import Navbar_khedmouni from '../../navbar';
-
-
-
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Opertunities_Navbar from '../../opertunities_navbar';
 
 function Remote() {
+
     return (
-        <div className='Remote'>
-            <Navbar_khedmouni />
-            
-        </div>
+        <Opertunities_Navbar/>
     );
 }
 
