@@ -53,8 +53,7 @@ function OurPartners() {
                   </Typography>
                </CardContent>
                <CardActions>
-                   <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
+                  <Button size="small"href='https://yassir.com/fr'>Learn More</Button>
              </CardActions>
            </Card>
         </Col>
@@ -75,9 +74,8 @@ function OurPartners() {
                     species, ranging across all continents except Antarctica
                   </Typography>
                </CardContent>
-               <CardActions>
-                   <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
+               <CardActions> 
+                  <Button size="small"href='https://www.djezzy.dz/'>Learn More</Button>
              </CardActions>
            </Card>
         </Col>
@@ -97,8 +95,7 @@ function OurPartners() {
                   </Typography>
                </CardContent>
                <CardActions>
-                   <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
+                  <Button size="small" href='https://www.ooredoo.dz/fr/particuliers?gad_source=1&gclid=Cj0KCQiA7se8BhCAARIsAKnF3rw7z4FCb2FEOAgdK5-ne76l-SSmrXTOFmFFRxPGIleePlUCI-bL6nQaAmFYEALw_wcB'>Learn More</Button>
              </CardActions>
            </Card>
         </Col>
