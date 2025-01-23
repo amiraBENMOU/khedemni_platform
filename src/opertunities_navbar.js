@@ -1,50 +1,115 @@
 import React, { useState ,useEffect} from 'react';
+import { redirect, useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from 'react-router-dom';
+import { MdOutlineDarkMode, MdDarkMode } from 'react-icons/md';
+import '../src/Pages/App.css';
+import Button from 'react-bootstrap/Button';
 
 
 
-
-
-function Opertunities_Navbar() {
+function Navbar_khedmouni() {
   
+//navigate 
+const navigate = useNavigate();
+//
+const handleAdminClick = () => {
+  navigate('/admin');
+};
+//useEffect
+useEffect(() => {
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  setSigninText(isAuthenticated ? 'Sign Out' : 'Sign In');
+}, []);
 
-    const TextStyle = { fontSize: '42px' };
-    //navigate 
-      const navigate = useNavigate();
-    
-    const handleRemoteJobClick = () => {
-        navigate('/');
-      };
-    
-    const [hoveredElement, setHoveredElement] = useState(null); // Track the hovered element
 
-    const getHoverStyle = (elementName) => ({
-        color: hoveredElement === elementName ? '#5FA0FF' : '#000000', // Unique hover behavior
-        padding: '10px 20px',
-        borderRadius: '5px',
-        cursor: 'pointer',
-        transition: 'color 0.3s ease',
-        ... TextStyle,
-      });
+  const navItemStyle = { fontSize: '20px' };
+  const [darkMode, setDarkMode] = useState(false);
+
+  const location = useLocation(); // Get the current path
+    
+
+  const toggleLightDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
+
+//sign up sign out function 
+const [signinText, setSigninText] = useState('Sign in');
+
+const handleSignInClick = () => {
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+    if (isAuthenticated) {
+      localStorage.removeItem('userName');
+      localStorage.removeItem('isAuthenticated');
+      setSigninText('Sign In');
+      navigate('/signIn');
+    } else {
+      setSigninText('Sign Out');
+      navigate('/signIn');
+    }
+};
+
+
+
+
+
+
   return (
     <div className="Navbar shadow-sm bg-white rounded sticky-top">
       <Navbar expand="lg" className="bg">
         <Container>
-          <Navbar.Brand href="/">
-            <h1 className='text-center mt-3 pt-3' style={getHoverStyle('remote')}
-            onMouseEnter={() => setHoveredElement('remote')}
-            onMouseLeave={() => setHoveredElement(null)}
-            onClick={handleRemoteJobClick}> 
+          <Navbar.Brand href="/">Khedemni</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link
+                href="/remote"
+                style={{
+                  ...navItemStyle,
+                  color: location.pathname === "/remote" ? "#5FA0FF" : "black", // Highlight when on Home page
+                }}
+              >
+                Remote Jobs
+              </Nav.Link>
+              <Nav.Link
+                href="/part-time"
+                style={{
+                  ...navItemStyle,
+                  color: location.hash === "/part-time" ? "#5FA0FF" : "black",
+                }}
+              >
+                Part-Time Jobs
+              </Nav.Link>
+              <Nav.Link
+                href="/internships"
+                style={{
+                  ...navItemStyle,
+                  color: location.hash === "/interships" ? "#5FA0FF" : "black",
+                }}
+              >
+                Internships
+              </Nav.Link>
+              
+              <Nav.Link onClick={toggleLightDarkMode} style={navItemStyle}>
+                {darkMode ? <MdDarkMode /> : <MdOutlineDarkMode />}
+              </Nav.Link>
+              <Nav.Link
+                onClick={handleSignInClick} // Toggle text on click
+                style={{
+                  ...navItemStyle
+                }}
+              >
+           <Button variant="primary">{signinText}</Button> 
 
-            khademni </h1>
-            </Navbar.Brand>
-    
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </div>
   );
 }
 
-export default Opertunities_Navbar;
+export default Navbar_khedmouni;
