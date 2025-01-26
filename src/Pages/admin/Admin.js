@@ -3,6 +3,7 @@ import { useGetContactsQuery, useDeleteContactMutation } from '../../state/api/a
 import Navbar_khedmouni from '../../navbar';
 import { useNavigate ,useParams} from 'react-router-dom';
 import { getContactReportUrl } from '../../state/api/apiSlice';
+import { Container, TextField, Button, Typography, Box } from '@mui/material';
   
 
 
@@ -14,6 +15,14 @@ function Admin_component() {
     const [searchName, setSearchName] = useState('');
     const [searchEmail, setSearchEmail] = useState('');
     const [userContacts, setUserContacts] = useState([]);
+    const [companyData, setCompanyData] = useState({
+        companyName: '',
+        email: '',
+        address: '',
+        phoneNumber: '',
+        webPage: '',
+        logo: null,
+    });
 
 //fetch data 
     useEffect(() => {
@@ -48,6 +57,30 @@ function Admin_component() {
             alert('Failed to delete contact.');
         }
     };
+    //for company data
+    const handleCompanyDataChange = (e) => {
+        const { name, value } = e.target;
+        setCompanyData({
+            ...companyData,
+            [name]: value,
+        });
+    };
+
+    const handleLogoChange =async(e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const data = new FormData ();
+        // file is a fixed keyword for cloudinary
+        data.append('file', file);
+        //khedemni is the name in cloudinary 
+        data.append('upload_preset', 'khedemni');
+        data.append('cloud_name', ' dsfoania5');
+
+        await fetch('https://api.cloudinary.com/v1_1/dsfoania5/image/upload', {
+            
+    };
+
+
 
     /**
  * Get  Report for a specific contact
@@ -65,6 +98,14 @@ function Admin_component() {
         (searchName === '' || contact.fullName.toLowerCase().includes(searchName.toLowerCase())) &&
         (searchEmail === '' || contact.email.toLowerCase().includes(searchEmail.toLowerCase()))
     );
+
+    //for thze company 
+    const handleCompanySubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission logic here
+        console.log('Company Data:', companyData);
+    };
+
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
@@ -118,11 +159,104 @@ function Admin_component() {
                     </li>
                 ))}
            </ul>
-
+           <h1> Add Your Cmpany details : </h1>
+           <Container maxWidth="sm">
+                <Box
+                    component="form"
+                    onSubmit={handleCompanySubmit}
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        p: 4,
+                        backgroundColor: 'white',
+                        borderRadius: 2,
+                        boxShadow: 1,
+                    }}
+                >
+                    <TextField
+                        label="Company Name"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        required
+                        name="companyName"
+                        value={companyData.companyName}
+                        onChange={handleCompanyDataChange}
+                    />
+                    <TextField
+                        label="Email"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        required
+                        name="email"
+                        value={companyData.email}
+                        onChange={handleCompanyDataChange}
+                    />
+                    <TextField
+                        label="Address"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        required
+                        name="address"
+                        value={companyData.address}
+                        onChange={handleCompanyDataChange}
+                    />
+                    <TextField
+                        label="Phone Number"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        required
+                        name="phoneNumber"
+                        value={companyData.phoneNumber}
+                        onChange={handleCompanyDataChange}
+                    />
+                    <TextField
+                        label="Web Page"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        required
+                        name="webPage"
+                        value={companyData.webPage}
+                        onChange={handleCompanyDataChange}
+                    />
+                    <Button
+                        variant="contained"
+                        component="label"
+                        sx={{ mt: 2 }}
+                        style={{ backgroundColor: 'green' }}
+                        className='w-100'
+                    >
+                        Upload Logo
+                        <input
+                            type="file"
+                            hidden
+                            onChange={handleLogoChange}
+                        />
+                    </Button>
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        sx={{ mt: 2 }}
+                        className='w-100'
+                    >
+                        Submit
+                    </Button>
+                </Box>
+            </Container>
         </div>
+    );
+
+
+    
 
         
-    );
+    
 }
 
 export default Admin_component;
