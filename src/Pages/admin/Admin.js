@@ -8,6 +8,7 @@ import { Container, TextField, Button, Typography, Box } from '@mui/material';
 
 
 function Admin_component() {
+    
     const navigate = useNavigate();
     const { id } = useParams();
     const { data: contacts, error, isLoading } = useGetContactsQuery();
@@ -23,6 +24,8 @@ function Admin_component() {
         webPage: '',
         logo: null,
     });
+    const [loading, setLoading] = useState(false);
+    const [logoUploadSuccess, setLogoUploadSuccess] = useState(false);
 
 //fetch data 
     useEffect(() => {
@@ -57,6 +60,7 @@ function Admin_component() {
             alert('Failed to delete contact.');
         }
     };
+
     //for company data
     const handleCompanyDataChange = (e) => {
         const { name, value } = e.target;
@@ -69,6 +73,7 @@ function Admin_component() {
     const handleLogoChange =async(e) => {
         const file = e.target.files[0];
         if (!file) return;
+        setLoading(true);
         const data = new FormData ();
         // file is a fixed keyword for cloudinary
         data.append('file', file);
@@ -76,9 +81,17 @@ function Admin_component() {
         data.append('upload_preset', 'khedemni');
         data.append('cloud_name', ' dsfoania5');
 
-        await fetch('https://api.cloudinary.com/v1_1/dsfoania5/image/upload', {
-            
-    };
+     const res = await fetch("https://api.cloudinary.com/v1_1/dsfoania5/image/upload", {
+        method: "POST",
+        body: data
+    });
+
+    const uploadedImageURL = await res.json();
+    console.log(uploadedImageURL.url);
+    setLoading(false);
+    //logo uploaded secsesfully
+    setLogoUploadSuccess(true);
+};
 
 
 
@@ -230,6 +243,7 @@ function Admin_component() {
                         sx={{ mt: 2 }}
                         style={{ backgroundColor: 'green' }}
                         className='w-100'
+                        
                     >
                         Upload Logo
                         <input
@@ -237,7 +251,10 @@ function Admin_component() {
                             hidden
                             onChange={handleLogoChange}
                         />
+                              
                     </Button>
+                    {loading && <span>Loading...</span>}
+                    {logoUploadSuccess && <span>Your logo has been loaded successfully</span>}
                     <Button
                         type="submit"
                         variant="contained"
