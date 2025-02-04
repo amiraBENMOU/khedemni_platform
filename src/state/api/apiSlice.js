@@ -31,14 +31,7 @@ export const apiSlice = createApi({
                 method: 'DELETE',
             }),
         }),
-        // fetchUsersWithContacts: builder.mutation({
-          //  query: () => ({
-              //  url: '/contact//fetchUserContact',
-              //  method: 'GET',
-         //   }),
-       // }),
-
-        //signIn and signUp
+        //sign Up
         signUp: builder.mutation({
             query: (userData) => ({
                 url: '/user/signUp',
@@ -46,6 +39,7 @@ export const apiSlice = createApi({
                 body: userData,
             }),
         }),
+        //sign In
         signIn: builder.mutation({
             query: (userData) => ({
                 url: '/user/signIn',
@@ -61,9 +55,17 @@ export const apiSlice = createApi({
                 }
             },
         }),
+        createCompany: builder.mutation({
+                query: (company) => ({
+                  url: '/company/createCompany',
+                  method: 'POST',
+                  body: company,
+                }),
+              }),
+        
         }),
 });
-export const { useCreateContactMutation, useGetContactsQuery, useUpdateContactMutation,useDeleteContactMutation , useSignUpMutation, useSignInMutation  } = apiSlice;
+export const { useCreateContactMutation, useGetContactsQuery, useUpdateContactMutation,useDeleteContactMutation , useSignUpMutation, useSignInMutation,useCreateCompanyMutation } = apiSlice;
   
 export const getContactReportUrl = (
     contactId, 

@@ -2,12 +2,13 @@ import React, { useEffect,useState } from 'react';
 import { useGetContactsQuery, useDeleteContactMutation } from '../../state/api/apiSlice';
 import Navbar_khedmouni from '../../navbar';
 import { useNavigate ,useParams} from 'react-router-dom';
-import { getContactReportUrl } from '../../state/api/apiSlice';
+import { getContactReportUrl ,useCreateCompanyMutation } from '../../state/api/apiSlice';
 import { Container, TextField, Button, Typography, Box } from '@mui/material';
   
 
 
 function Admin_component() {
+   
     
     const navigate = useNavigate();
     const { id } = useParams();
@@ -26,6 +27,8 @@ function Admin_component() {
     });
     const [loading, setLoading] = useState(false);
     const [logoUploadSuccess, setLogoUploadSuccess] = useState(false);
+    //create a company
+    const [ createCompany, { isLoadingCompany }] = useCreateCompanyMutation();
 
 //fetch data 
     useEffect(() => {
@@ -260,6 +263,7 @@ function Admin_component() {
                         color="primary"
                         sx={{ mt: 2 }}
                         className='w-100'
+                        disabled={isLoadingCompany}
                     >
                         Submit
                     </Button>

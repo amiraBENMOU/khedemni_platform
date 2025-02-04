@@ -1,7 +1,7 @@
 import React from "react";
 import '../src/Footer.css';
 
-const footerStyle = {backgroundColor: '#F1F1F1'};
+const footerStyle = {backgroundColor: '#35414cfb', color: 'white'};
 
 
 
