@@ -232,7 +232,6 @@ function Admin_component() {
                         variant="outlined"
                         margin="normal"
                         fullWidth
-                        required
                         name="webPage"
                         value={companyData.webPage}
                         onChange={handleCompanyDataChange}
