@@ -23,7 +23,7 @@ function Admin_component() {
         address: '',
         phoneNumber: '',
         webPage: '',
-        logo: null,
+        image:'',
     });
     const [loading, setLoading] = useState(false);
     const [logoUploadSuccess, setLogoUploadSuccess] = useState(false);
@@ -120,11 +120,13 @@ function Admin_component() {
         e.preventDefault();
         // Handle form submission logic here
         console.log('Company Data:', companyData);
+        
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error.message}</div>;
+
     };
 
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
 
     return (
         <div className='Admin_component'>
@@ -263,7 +265,6 @@ function Admin_component() {
                         color="primary"
                         sx={{ mt: 2 }}
                         className='w-100'
-                        disabled={isLoadingCompany}
                     >
                         Submit
                     </Button>
