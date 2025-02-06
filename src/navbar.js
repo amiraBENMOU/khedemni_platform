@@ -18,6 +18,7 @@ const navigate = useNavigate();
 const handleAdminClick = () => {
   navigate('/admin');
 };
+
 //useEffect
 useEffect(() => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
@@ -80,16 +81,18 @@ const handleSignInClick = () => {
                   color: location.hash === "#opportunities" ? "#5FA0FF" : "black",
                 }}
               >
-                Open Positions
+                Our Opertunities
               </Nav.Link>
               <Nav.Link
-                href="#contact"
+              href="#openPositions"
                 style={{
                   ...navItemStyle,
-                  color: location.hash === "#contact" ? "#5FA0FF" : "black",
+                  color: location.hash === "#openPositions" ? "#5FA0FF" : "black",
+                  
                 }}
               >
-                Contact Us
+                Open Positions
+                
               </Nav.Link>
               <Nav.Link
               href="/admin"
