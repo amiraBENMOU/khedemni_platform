@@ -1,15 +1,17 @@
 import React, { useEffect,useState } from 'react';
-import { useGetContactsQuery, useDeleteContactMutation } from '../../state/api/apiSlice';
+import { useGetContactsQuery, useDeleteContactMutation ,useCreateCompanyMutation} from '../../state/api/apiSlice';
 import Navbar_khedmouni from '../../navbar';
 import { useNavigate ,useParams} from 'react-router-dom';
-import { getContactReportUrl ,useCreateCompanyMutation } from '../../state/api/apiSlice';
-import { Container, TextField, Button, Typography, Box } from '@mui/material';
+import { getContactReportUrl  } from '../../state/api/apiSlice';
+import { Container, TextField, Button, Box } from '@mui/material';
   
 
 
 function Admin_component() {
-   
-    
+    //errors
+     const [errors, setErrors] = useState({});
+     //valid
+     const [valid, setValid] = useState({});
     const navigate = useNavigate();
     const { id } = useParams();
     const { data: contacts, error, isLoading } = useGetContactsQuery();
@@ -17,18 +19,28 @@ function Admin_component() {
     const [searchName, setSearchName] = useState('');
     const [searchEmail, setSearchEmail] = useState('');
     const [userContacts, setUserContacts] = useState([]);
+    //company 
+    const [ createCompany] = useCreateCompanyMutation();
     const [companyData, setCompanyData] = useState({
-        companyName: '',
-        email: '',
-        address: '',
-        phoneNumber: '',
-        webPage: '',
+        companyName:'',
+        email:'',
+        adresse:'',
+        phoneNumber:'',
+        webPage:'',
         image:'',
     });
+
+    //for company data
+    const handleCompanyDataChange = (e) => {
+        const { name, value } = e.target;
+        setCompanyData({
+            ...companyData,
+            [name]: value,
+        });
+    };
     const [loading, setLoading] = useState(false);
     const [logoUploadSuccess, setLogoUploadSuccess] = useState(false);
-    //create a company
-    const [ createCompany, { isLoadingCompany }] = useCreateCompanyMutation();
+    
 
 //fetch data 
     useEffect(() => {
@@ -64,14 +76,7 @@ function Admin_component() {
         }
     };
 
-    //for company data
-    const handleCompanyDataChange = (e) => {
-        const { name, value } = e.target;
-        setCompanyData({
-            ...companyData,
-            [name]: value,
-        });
-    };
+    
 
     const handleLogoChange =async(e) => {
         const file = e.target.files[0];
@@ -94,6 +99,10 @@ function Admin_component() {
     setLoading(false);
     //logo uploaded secsesfully
     setLogoUploadSuccess(true);
+    setCompanyData({
+        ...companyData,
+        image: uploadedImageURL.url,
+    });
 };
 
 
@@ -116,14 +125,19 @@ function Admin_component() {
     );
 
     //for thze company 
-    const handleCompanySubmit = (e) => {
+    const handleCompanySubmit = async (e) => {
         e.preventDefault();
         // Handle form submission logic here
         console.log('Company Data:', companyData);
         
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
-
+        try {
+            const response = createCompany(companyData).unwrap();
+            console.log('Company created:', response);
+            alert('Company created successfully!');
+        } catch (error) {
+            console.error('Failed to create company:', error);
+            alert('Failed to create company.');
+        }
     };
 
 
@@ -201,6 +215,9 @@ function Admin_component() {
                         name="companyName"
                         value={companyData.companyName}
                         onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.companyName}
+                        isValid={!!valid.companyName}
+
                     />
                     <TextField
                         label="Email"
@@ -211,6 +228,8 @@ function Admin_component() {
                         name="email"
                         value={companyData.email}
                         onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.email}
+                        isValid={!!valid.email}
                     />
                     <TextField
                         label="Address"
@@ -218,9 +237,12 @@ function Admin_component() {
                         margin="normal"
                         fullWidth
                         required
-                        name="address"
-                        value={companyData.address}
+                        name="adresse"
+                        value={companyData.adresse}
                         onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.adresse}
+                        isValid={!!valid.adresse}
+                        multiline
                     />
                     <TextField
                         label="Phone Number"
@@ -231,6 +253,8 @@ function Admin_component() {
                         name="phoneNumber"
                         value={companyData.phoneNumber}
                         onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.phoneNumber}
+                        isValid={!!valid.phoneNumber}
                     />
                     <TextField
                         label="Web Page"
@@ -240,6 +264,8 @@ function Admin_component() {
                         name="webPage"
                         value={companyData.webPage}
                         onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.webPage}
+                        isValid={!!valid.webPage}
                     />
                     <Button
                         variant="contained"
