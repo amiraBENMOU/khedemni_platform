@@ -5,7 +5,6 @@ import team_work from './assets/Images/team.jpg';
 
 
 function Whoweare() {
-  const ButtonStyle = { color: 'white', backgroundColor: '#5FA0FF', border: 'none' };
   const TextStyle = { fontSize: '20px' };
   const TextStyleH = { fontSize: '36px' };
 
@@ -28,7 +27,7 @@ function Whoweare() {
           <p className="text-start pt-4" style={TextStyle}>
             At <strong>Khedemni</strong>, we believe in breaking down traditional employment barriers and creating a flexible, inclusive job market that caters to both remote workers and students. Our mission is to connect talented individuals with meaningful employment opportunities that fit their lifestyles, allowing them to achieve a healthy work-life balance while gaining valuable experience and financial independence.
           </p>
-          <Button variant="primary" className="w-25 mt-3 mb-3" style={ButtonStyle}>Join Us</Button>
+          <Button variant="primary" className="w-25 mt-3 mb-3" >Join Us</Button>
         </Col>
         <Col lg={6}>
           <img src={team_work} alt="My Work" className="shadow-lg img-fluid rounded bg-body "  />
