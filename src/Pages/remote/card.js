@@ -20,10 +20,10 @@ function SelectActionCard() {
             marginBottom: '20px',
             width:'80%',
             '&:hover': {
-              backgroundColor: '#DEDEDE', // Background color on hover
+              backgroundColor: '#F2F4F7', // Background color on hover
             },
             '&[data-active]': {
-              backgroundColor: '#DEDEDE', // Active card background color
+              backgroundColor: '#F2F4F7', // Active card background color
             },
           }}
         >
@@ -33,9 +33,9 @@ function SelectActionCard() {
             sx={{
               height: '100%',width:'80%',
               '&[data-active]': {
-                backgroundColor: '#ECECEC', // Active card background color
+                backgroundColor: '#F2F4F7', // Active card background color
                 '&:hover': {
-                  backgroundColor: '#ECECEC', // Background color on hover when active
+                  backgroundColor: '#F2F4F7', // Background color on hover when active
                 },
               },
             }}
