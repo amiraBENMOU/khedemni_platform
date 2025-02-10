@@ -4,6 +4,9 @@ import Navbar_khedmouni from '../../navbar';
 import { useNavigate ,useParams} from 'react-router-dom';
 import { getContactReportUrl  } from '../../state/api/apiSlice';
 import { Container, TextField, Button, Box } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
   
 
 
@@ -13,7 +16,6 @@ function Admin_component() {
      //valid
      const [valid, setValid] = useState({});
     const navigate = useNavigate();
-    const { id } = useParams();
     const { data: contacts, error, isLoading } = useGetContactsQuery();
     const [deleteContact] = useDeleteContactMutation();
     const [searchName, setSearchName] = useState('');
@@ -69,10 +71,10 @@ function Admin_component() {
     const handleDeleteClick = async (contactId) => {
         try {
             await deleteContact(contactId).unwrap();
-            alert('Contact deleted successfully!');
+            toast.success('Contact deleted successfully!');
         } catch (err) {
             console.error('Failed to delete contact:', err);
-            alert('Failed to delete contact.');
+            toast.error('Failed to delete contact.');
         }
     };
 
@@ -133,10 +135,10 @@ function Admin_component() {
         try {
             const response = createCompany(companyData).unwrap();
             console.log('Company created:', response);
-            alert('Company created successfully!');
+            toast.success('Company created successfully!');
         } catch (error) {
             console.error('Failed to create company:', error);
-            alert('Failed to create company.');
+            toast.error('Failed to create company.');
         }
     };
 
@@ -145,6 +147,8 @@ function Admin_component() {
     return (
         <div className='Admin_component'>
             <Navbar_khedmouni />
+            <ToastContainer/>
+            
             <h1>Listing Contact Content</h1>
             <div>
                 <label>

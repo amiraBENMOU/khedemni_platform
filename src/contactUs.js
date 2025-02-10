@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useCreateContactMutation } from './state/api/apiSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Contact() {
     const [createContact, { isLoading }] = useCreateContactMutation();
@@ -62,7 +64,7 @@ function Contact() {
         }
         try {
             await createContact(formData).unwrap();
-            alert('Contact submitted successfully!');
+            toast.success('Contact submitted successfully!');
             setFormData({ fullName: '', email: '', content: '' });
             setErrors({});
             setValid({});
@@ -75,6 +77,7 @@ function Contact() {
 
     return (
         <Container className="Contact mt-5 pt-5 mb-3 pb-3">
+            <ToastContainer/>
             <Row>
                 <h1 className="mt-2 pt-3 text-start">Contact Us</h1>
             </Row>
