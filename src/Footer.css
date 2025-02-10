@@ -5,6 +5,6 @@
 }
 
 .footer-link:hover {
-  text-decoration: underline; /* Add your desired hover effect here */
+  text-decoration: none; /* Ensure underline is removed on hover */
   color: grey; /* Change the color on hover, if needed */
 }

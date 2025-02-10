@@ -62,10 +62,27 @@ export const apiSlice = createApi({
                   body: company,
                 }),
               }),
+
+        getCompanies: builder.query({
+                query: () => ({
+                    url: '/company/getCompanies',
+                    method: 'GET',
+                }), 
+              
         
         }),
+    }),
 });
-export const { useCreateContactMutation, useGetContactsQuery, useUpdateContactMutation,useDeleteContactMutation , useSignUpMutation, useSignInMutation,useCreateCompanyMutation } = apiSlice;
+
+export const { useCreateContactMutation,
+     useGetContactsQuery, 
+     useUpdateContactMutation,
+     useDeleteContactMutation , 
+     useSignUpMutation, 
+     useSignInMutation,
+     useCreateCompanyMutation,
+     useGetCompaniesQuery
+     } = apiSlice;
   
 export const getContactReportUrl = (
     contactId, 
@@ -73,6 +90,6 @@ export const getContactReportUrl = (
 ) =>{
     console.log("contactId", contactId)
     return  `http://localhost:50000/contact/${contactId}/report`;
-}
+};
    
 
