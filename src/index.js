@@ -7,6 +7,7 @@ import Remote from './Pages/remote/Remote';
 import Admin_component from './Pages/admin/Admin';
 import SignIn from './Pages/account/signIn';
 import SignUp from './Pages/account/signUp';
+import Open_positions from './Pages/openPositions/OpenPositions';
 import reportWebVitals from './reportWebVitals';
 
 
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
     path: "/signUp",
     element: <SignUp/>,
   },
+  {
+    path: "/openPositions",
+    element: <Open_positions/>,
+  },
+  
 
 ]);
 

@@ -19,6 +19,7 @@ const handleAdminClick = () => {
   navigate('/admin');
 };
 
+
 //useEffect
 useEffect(() => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
@@ -26,7 +27,7 @@ useEffect(() => {
 }, []);
 
 
-  const navItemStyle = { fontSize: '20px' };
+  const navItemStyle = { fontSize: '20px'};
   const [darkMode, setDarkMode] = useState(false);
 
   const location = useLocation(); // Get the current path
@@ -84,10 +85,10 @@ const handleSignInClick = () => {
                 Our Opertunities
               </Nav.Link>
               <Nav.Link
-              href="#openPositions"
+              href="/openPositions"
                 style={{
                   ...navItemStyle,
-                  color: location.hash === "#openPositions" ? "#5FA0FF" : "black",
+                  color: location.pathname === "/openPositions" ? "#5FA0FF" : "black",
                   
                 }}
               >
