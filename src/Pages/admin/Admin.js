@@ -6,6 +6,7 @@ import { getContactReportUrl  } from '../../state/api/apiSlice';
 import { Container, TextField, Button, Box } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import TemporaryDrawer from './components/drawer.js';
 
   
 
@@ -148,6 +149,7 @@ function Admin_component() {
         <div className='Admin_component'>
             <Navbar_khedmouni />
             <ToastContainer/>
+            <TemporaryDrawer />
             
             <h1>Listing Contact Content</h1>
             <div>

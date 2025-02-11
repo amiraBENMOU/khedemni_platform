@@ -7,7 +7,7 @@ import Remote from './Pages/remote/Remote';
 import Admin_component from './Pages/admin/Admin';
 import SignIn from './Pages/account/signIn';
 import SignUp from './Pages/account/signUp';
-import Open_positions from './Pages/openPositions/OpenPositions';
+import Open_positions from './Pages/openPositions/openPositions.js';
 import reportWebVitals from './reportWebVitals';
 
 
