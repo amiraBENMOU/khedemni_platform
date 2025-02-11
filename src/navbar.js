@@ -24,6 +24,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import '../src/Pages/App.css';
+import { Typography } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -206,6 +207,9 @@ function Navbar_khedmouni() {
           </IconButton>
         </DrawerHeader>
         <Divider />
+        <Typography variant="h6" component="div" style={{ textAlign: 'center', marginTop: '10px' }}>
+           Admin 
+        </Typography>
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem key={text} disablePadding>
