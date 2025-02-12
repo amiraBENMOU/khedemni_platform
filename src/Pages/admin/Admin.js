@@ -181,21 +181,6 @@ function Admin_component() {
                     </li>
             ))}
             </ul>
-            <h1>Users that are signed in and have written an email in Contact Us</h1>
-            <ul>
-                {userContacts.map(user => (
-                    <li key={user._id}>
-                        {user.fullName} - {user.email}
-                        <ul>
-                            {user.contacts.map(contact => (
-                                <li key={contact.contactId}>
-                                    {contact.content}
-                                </li>
-                            ))}
-                     </ul>
-                    </li>
-                ))}
-           </ul>
            <h1> Add Your Cmpany details : </h1>
            <Container maxWidth="sm">
                 <Box
