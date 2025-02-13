@@ -162,7 +162,7 @@ function Navbar_khedmouni() {
                 color: location.pathname === "/openPositions" ? "#5FA0FF" : "black",
               }}
             >
-              Open Positions
+              Join Our Team
             </Nav.Link>
             <Nav.Link
               href="/admin"
