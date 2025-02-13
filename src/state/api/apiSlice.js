@@ -50,6 +50,8 @@ export const apiSlice = createApi({
                 try {
                     const { data } = await queryFulfilled;
                     localStorage.setItem('token', data.token);
+                    localStorage.setItem('fullName', data.fullName); // Store fullName in local storage
+
                 } catch (error) {
                     console.error('Failed to sign in:', error);
                 }
