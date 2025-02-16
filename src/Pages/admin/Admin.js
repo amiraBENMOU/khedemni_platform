@@ -304,7 +304,7 @@ function Admin_component() {
                     }}
                 >
                     <TextField
-                        label="Company Name"
+                        label="Job Title"
                         variant="outlined"
                         margin="normal"
                         fullWidth
@@ -317,7 +317,7 @@ function Admin_component() {
 
                     />
                     <TextField
-                        label="Email"
+                        label="Type Of The Job"
                         variant="outlined"
                         margin="normal"
                         fullWidth
@@ -329,7 +329,7 @@ function Admin_component() {
                         isValid={!!valid.email}
                     />
                     <TextField
-                        label="Address"
+                        label="Domaine"
                         variant="outlined"
                         margin="normal"
                         fullWidth
@@ -342,7 +342,7 @@ function Admin_component() {
                         multiline
                     />
                     <TextField
-                        label="Phone Number"
+                        label="Type of the Contract"
                         variant="outlined"
                         margin="normal"
                         fullWidth
@@ -354,7 +354,7 @@ function Admin_component() {
                         isValid={!!valid.phoneNumber}
                     />
                     <TextField
-                        label="Web Page"
+                        label="Number of the Postes"
                         variant="outlined"
                         margin="normal"
                         fullWidth
@@ -364,24 +364,17 @@ function Admin_component() {
                         isInvalid={!!errors.webPage}
                         isValid={!!valid.webPage}
                     />
-                    <Button
-                        variant="contained"
-                        component="label"
-                        sx={{ mt: 2 }}
-                        style={{ backgroundColor: 'green' }}
-                        className='w-100'
-                        
-                    >
-                        Upload Logo
-                        <input
-                            type="file"
-                            hidden
-                            onChange={handleLogoChange}
-                        />
-                              
-                    </Button>
-                    {loading && <span>Loading...</span>}
-                    {logoUploadSuccess && <span>Your logo has been loaded successfully</span>}
+                    <TextField
+                        label="Description of the position "
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        name="webPage"
+                        value={companyData.webPage}
+                        onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.webPage}
+                        isValid={!!valid.webPage}
+                    />
                     <Button
                         type="submit"
                         variant="contained"
