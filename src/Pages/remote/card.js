@@ -17,7 +17,7 @@ function SelectActionCard() {
           sx={{
             backgroundColor: 'white', // Default background color
             marginBottom: '20px',
-            width: '80%',
+            width: '100%',
             '&:hover': {
               backgroundColor: '#F2F4F7', // Background color on hover
             },

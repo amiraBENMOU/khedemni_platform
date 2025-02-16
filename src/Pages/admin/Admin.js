@@ -286,6 +286,116 @@ function Admin_component() {
                     </Button>
                 </Box>
             </Container>
+            <div className='job-offer mt-5'>
+                <h1>Add a job offor to join and work with us :  </h1>
+
+                <Container maxWidth="sm">
+                <Box
+                    component="form"
+                    onSubmit={handleCompanySubmit}
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        p: 4,
+                        backgroundColor: 'white',
+                        borderRadius: 2,
+                        boxShadow: 1,
+                    }}
+                >
+                    <TextField
+                        label="Company Name"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        required
+                        name="companyName"
+                        value={companyData.companyName}
+                        onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.companyName}
+                        isValid={!!valid.companyName}
+
+                    />
+                    <TextField
+                        label="Email"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        required
+                        name="email"
+                        value={companyData.email}
+                        onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.email}
+                        isValid={!!valid.email}
+                    />
+                    <TextField
+                        label="Address"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        required
+                        name="adresse"
+                        value={companyData.adresse}
+                        onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.adresse}
+                        isValid={!!valid.adresse}
+                        multiline
+                    />
+                    <TextField
+                        label="Phone Number"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        required
+                        name="phoneNumber"
+                        value={companyData.phoneNumber}
+                        onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.phoneNumber}
+                        isValid={!!valid.phoneNumber}
+                    />
+                    <TextField
+                        label="Web Page"
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        name="webPage"
+                        value={companyData.webPage}
+                        onChange={handleCompanyDataChange}
+                        isInvalid={!!errors.webPage}
+                        isValid={!!valid.webPage}
+                    />
+                    <Button
+                        variant="contained"
+                        component="label"
+                        sx={{ mt: 2 }}
+                        style={{ backgroundColor: 'green' }}
+                        className='w-100'
+                        
+                    >
+                        Upload Logo
+                        <input
+                            type="file"
+                            hidden
+                            onChange={handleLogoChange}
+                        />
+                              
+                    </Button>
+                    {loading && <span>Loading...</span>}
+                    {logoUploadSuccess && <span>Your logo has been loaded successfully</span>}
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        sx={{ mt: 2 }}
+                        className='w-100'
+                    >
+                        Submit
+                    </Button>
+                </Box>
+            </Container>
+
+                
+            </div>
         </div>
     );
 
