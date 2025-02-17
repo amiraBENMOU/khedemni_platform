@@ -1,70 +1,78 @@
-import React, { useState } from 'react';
-import { Card, CardActionArea, CardContent, Typography, Grid } from '@mui/material';
+
+import * as React from 'react';
+import { useState } from 'react';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useGetCompaniesQuery } from '../../state/api/apiSlice';
 
-function SelectActionCard() {
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  transition: 'background-color 0.3s ease, box-shadow 0.3s ease', // Add transition for smooth effect
+  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', // Add initial shadow
+  border: '1px solid #ddd', // Add border to make lines visible
+  '&:hover': {
+    cursor: 'pointer', // Change cursor to pointer on hover
+    boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.2)', // Add shadow on hover
+  },
+}));
+
+export default function SelectActionCard() {
   const { data: companies, error, isLoading } = useGetCompaniesQuery();
   const [selectedCard, setSelectedCard] = useState(null);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error loading companies</p>;
+
 
   return (
-    <div>
-      {companies.map((company, index) => (
-        <Card
-          key={index}
-          sx={{
-            backgroundColor: 'white', // Default background color
-            marginBottom: '20px',
-            width: '100%',
-            '&:hover': {
-              backgroundColor: '#F2F4F7', // Background color on hover
-            },
-          }}
-        >
-          <CardActionArea
-            onClick={() => setSelectedCard(index)}
-            data-active={selectedCard === index ? '' : undefined}
-            sx={{
-              height: '100%',
-              '&[data-active]': {
-                backgroundColor: '#F2F4F7', // Active card background color
-                '&:hover': {
-                  backgroundColor: '#F2F4F7', // Background color on hover when active
-                },
-              },
-            }}
-          >
-            <CardContent sx={{ height: '100%' }}>
-              <Grid container spacing={2}>
-                <Grid item xs={8}>
-                  <Typography variant="h5" component="div">
-                    {company.companyName}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
+    <>
+     {companies && companies.length > 0 ? (
+      companies.map((company, index) => (
+        <Box sx={{ width: '100%',marginBottom:"2%" }} key={index}>
+          <Stack spacing={1}>
+            <Item>
+              <Row>
+                <Col lg={2} >
+                  <p className="pt-3 text-start fw-bold " >
+                  {company.companyName}
+                  </p>
+                </Col>
+                <Col lg={2}>
+                  <p className="mt-3 text-start" >
                     {company.email}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {company.phoneNumber}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {company.adresse}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {company.webPage}
-                  </Typography>
-                </Grid>
-                <Grid item xs={4}>
-                <img src={company.image} alt={`${company.companyName} logo`} style={{ width: '50%', height: 'auto' }}  />
-                </Grid>
-              </Grid>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      ))}
-    </div>
-  );
-}
-
-export default SelectActionCard;
+                  </p>
+                </Col>
+                <Col lg={2}>
+                  <p className="mt-3 text-start" >
+                 {company.phoneNumber}
+                  </p>
+                </Col>
+                <Col lg={2}>
+                  <p className="mt-3 text-start" >
+                   {company.adresse}
+                  </p>
+                </Col>
+                <Col lg={2}>
+                  <p className="mt-3 text-start" >
+                    <img src={company.image} alt={`${company.companyName} logo`} style={{ width: '50%', height: 'auto' }}  />
+         
+                  </p>
+                </Col>
+             </Row>
+            </Item>
+          </Stack>
+        </Box>
+        ))
+       ) : (
+        <p>No companies available</p>
+         )}
+      </>
+    );
+  }

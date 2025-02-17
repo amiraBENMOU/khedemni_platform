@@ -33,13 +33,13 @@ function SignIn() {
 
   return (
     <Container
-      maxWidth="sm"
+      maxWidth="xxl"
       sx={{
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        backgroundColor: '#f0f0f0', // Grey background
+        backgroundColor: '#84BDFF', // Grey background
       }}
     >
       <Box
@@ -86,6 +86,9 @@ function SignIn() {
         >
           Sign In
         </Button>
+        <div className="mt-3">
+           <p> if you don't have an account, <a href="/signUp" style={{ textDecoration: 'none' }}>Sign Up</a></p> 
+       </div>
       </Box>
     </Container>
   );
