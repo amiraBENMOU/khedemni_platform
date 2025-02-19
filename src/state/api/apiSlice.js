@@ -70,11 +70,28 @@ export const apiSlice = createApi({
                     url: '/company/getCompanies',
                     method: 'GET',
                 }), 
-              
+            }),
+  //for the work positions on our platform  
+
+        createPosition: builder.mutation({
+             query: (position) => ({
+              url: '/position/createPosition',
+              method: 'POST',
+              body: position,
+             }),
+          }),
+
+          getPositions: builder.query({
+              query: () => ({
+              url: '/position/getPositions',
+              method: 'GET',
+           }),          
         
         }),
-    }),
+   
+}),
 });
+
 
 export const { useCreateContactMutation,
      useGetContactsQuery, 
@@ -83,7 +100,10 @@ export const { useCreateContactMutation,
      useSignUpMutation, 
      useSignInMutation,
      useCreateCompanyMutation,
-     useGetCompaniesQuery
+     useGetCompaniesQuery,
+     useCreatePositionMutation,
+     useGetPositionsQuery,
+
      } = apiSlice;
   
 export const getContactReportUrl = (
@@ -93,5 +113,6 @@ export const getContactReportUrl = (
     console.log("contactId", contactId)
     return  `http://localhost:50000/contact/${contactId}/report`;
 };
+
    
 
