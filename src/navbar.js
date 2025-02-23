@@ -23,6 +23,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Dropdown from 'react-bootstrap/Dropdown';
 import '../src/Pages/App.css';
 import { Typography } from '@mui/material';
 
@@ -153,7 +154,18 @@ function Navbar_khedmouni() {
                 color: location.hash === "#opportunities" ? "#5FA0FF" : "black",
               }}
             >
-              Our Opportunities
+            <Dropdown as={Nav.Item}>
+              <Dropdown.Toggle as={Nav.Link} style={{ ...navItemStyle, color: location.hash === "#opportunities" ? "#5FA0FF" : "black" }}>
+                Our Opportunities
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Remote Jobs</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Part-Time Jobs</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Internships</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+           
+
             </Nav.Link>
             <Nav.Link
               href="/openPositions"

@@ -4,8 +4,7 @@ import Typewriter from '../../../src/Typewriter.js';
 import Navbar_khedmouni from '../../navbar.js';
 import workWithUs from '../../assets/Images/job offer.png';
 import BasicStack from './stack.js';
-import icon from '../../assets/Images/greenredblue.png';
-import { WidthFullTwoTone } from '@mui/icons-material';
+import UploadPdf from  './uploadPdf.js';
 
 const fullName = localStorage.getItem('fullName');
 
@@ -46,7 +45,12 @@ function Open_positions() {
          <Row className='mt-5 pt-5'>
               <BasicStack/> 
         </Row>
-        
+        <Row className='mt-5 pt-5'>
+            <Col lg={6}>
+            
+             </Col>
+          </Row>
+
     </div>
     </Container>
   );

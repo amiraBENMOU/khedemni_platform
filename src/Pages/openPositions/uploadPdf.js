@@ -13,28 +13,14 @@ const MyComponent = ({ icon, title, label, accept }) => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-      <Button
-        variant="contained"
-        component="label"
-        startIcon={React.cloneElement(icon, { sx: { fontSize: 40 } })} // Increase icon size
-        sx={{ marginBottom: 2 }}
-      >
-        {label}
-        <input
-          type="file"
-          hidden
-          accept={accept}
-          onChange={(e) => handleChange(e.target.files[0])}
-        />
-      </Button>
+      <MyComponent
+        icon={<CloudUploadIcon />}
+        title="Upload your CV"
+        width="100%"
+        label="Upload your CV"
+        accept="application/pdf"
+       />
       {value && <p>{value.name}</p>}
     </Box>
   );
 };
-<MyComponent
-icon={<CloudUploadIcon />}
-title="Upload your CV"
-width="100%"
-label="Upload your CV"
-accept="application/pdf"
-/>
