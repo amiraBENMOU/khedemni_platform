@@ -37,7 +37,7 @@ function Description_khedmouni() {
         <Col lg={6}>
           <p className="mt-5 pt-5 text-start" style={TextStyle}>
           <span style={ColorStyle}>
-              {fullName ? <span style={fullNameStyle}>{` ${fullName}`}</span> : ","}  Welcome to Khedemni Platform | 
+              {fullName ? <span style={fullNameStyle}>{` ${fullName}`}</span> : " "}  Welcome to Khedemni Platform | 
             </span>    
             <Typewriter
               text=" where you find the job that will help building your career"

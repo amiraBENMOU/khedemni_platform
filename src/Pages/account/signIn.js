@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, Box } from '@mui/material';
 import { useSignInMutation } from '../../state/api/apiSlice';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -23,11 +25,11 @@ function SignIn() {
       const response = await signIn({ email, password }).unwrap();
       localStorage.setItem('isAuthenticated', 'true'); // Store authentication status
       console.log('Sign In Success:', response);
-      //test 
-    
+      toast.success('Sign In Successful!');
       navigate('/'); // Redirect to home page upon successful sign-in
     } catch (error) {
       console.error('Failed to sign in:', error);
+      toast.error('Failed to sign in. Please try again.');
     }
   };
 
@@ -42,6 +44,7 @@ function SignIn() {
         backgroundColor: '#84BDFF', // Grey background
       }}
     >
+      <ToastContainer />
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -87,8 +90,8 @@ function SignIn() {
           Sign In
         </Button>
         <div className="mt-3">
-           <p> if you don't have an account, <a href="/signUp" style={{ textDecoration: 'none' }}>Sign Up</a></p> 
-       </div>
+          <p> if you don't have an account, <a href="/signUp" style={{ textDecoration: 'none' }}>Sign Up</a></p>
+        </div>
       </Box>
     </Container>
   );
