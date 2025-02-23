@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useGetContactsQuery, useDeleteContactMutation, useCreateCompanyMutation, useCreatePositionMutation } from '../../state/api/apiSlice';
+import { useGetContactsQuery, useDeleteContactMutation, useCreateCompanyMutation, useGetCompaniesQuery,useCreatePositionMutation,useGetPositionsQuery} from '../../state/api/apiSlice';
 import Navbar_khedmouni from '../../navbar';
 import { useNavigate } from 'react-router-dom';
 import { getContactReportUrl } from '../../state/api/apiSlice';
-import { Container, TextField, Button, Box ,FormControl,InputLabel,Select,MenuItem} from '@mui/material';
+import { Container, TextField, Button, Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Admin_component() {
+    
     //errors
     const [errors, setErrors] = useState({});
     //valid
@@ -20,6 +21,9 @@ function Admin_component() {
     const [userContacts, setUserContacts] = useState([]);
     //company 
     const [createCompany] = useCreateCompanyMutation();
+    //position 
+    const [createPosition] = useCreatePositionMutation();
+    //for the company data
     const [companyData, setCompanyData] = useState({
         companyName: '',
         email: '',
@@ -28,16 +32,17 @@ function Admin_component() {
         webPage: '',
         image: '',
     });
-    //position 
-    const [createPosition] = useCreatePositionMutation();
-    const [positionData, setPositionData] = useState({
-        positionTitle: '',
-        positionType: '',
-        Domain: '',
-        DescriptionOfThePosition: '',
-        typeOfContract: '',
-        numberOfPepeol: '',
+
+     // Correct initialization of positionData state
+     const [positionData, setPositionData] = useState({
+     positionTitle: '',
+     positionType: '',
+      Domain: '',
+     DescriptionOfThePosition: '',
+     typeOfContract: '',
+     numberOfPepeol: '',
     });
+
 
     //for company data
     const handleCompanyDataChange = (e) => {
@@ -48,13 +53,15 @@ function Admin_component() {
         });
     };
     //for position data
-    const handlePositionDataChange = (e) => {
-        const { name, value } = e.target;
-        setPositionData({
-            ...positionData,
-            [name]: value,
-        });
-    };
+   // Handle form input change correctly
+   const handlePositionDataChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value); // Debug the name and value here
+    setPositionData({
+        ...positionData,
+        [name]: value, // Make sure to use positionData here
+    });
+};
     const [loading, setLoading] = useState(false);
     const [logoUploadSuccess, setLogoUploadSuccess] = useState(false);
 
@@ -145,21 +152,22 @@ function Admin_component() {
         }
     };
 
+
     //for the Position
     const handlePositionSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission logic here
         console.log('Position Data:', positionData);
-
+    
         try {
-            const response = await createPosition(positionData).unwrap();
-            console.log('Position created:', response);
+            const response = await createPosition(positionData);
+            console.log('Position Response:', response);
             toast.success('Position created successfully!');
         } catch (error) {
             console.error('Failed to create a new position:', error);
             toast.error('Failed to create a new position.');
         }
     };
+    
 
     return (
         <div className='Admin_component'>
@@ -363,7 +371,7 @@ function Admin_component() {
                                 
 
                             </Select>
-                            {errors.Domain && <p style={{ color: 'red' }}>{errors.positionType}</p>}
+                            {errors.Domain && <p style={{ color: 'red' }}>{errors.Domain}</p>}
                         </FormControl>
                        
                           <FormControl fullWidth margin="normal" variant="outlined" required>
@@ -379,7 +387,7 @@ function Admin_component() {
                                 <MenuItem value="CDD">CDD</MenuItem>
                                 <MenuItem value="freelnce">freelnce</MenuItem>
                             </Select>
-                            {errors.typeOfContract && <p style={{ color: 'red' }}>{errors.positionType}</p>}
+                            {errors.typeOfContract && <p style={{ color: 'red' }}>{errors.typeOfContract}</p>}
                         </FormControl>
                         <TextField
                             label="Number of the Posts"
@@ -419,7 +427,7 @@ function Admin_component() {
                 </Container>
             </div>
         </div>  
-          );
+    );
 }
 
 export default Admin_component;

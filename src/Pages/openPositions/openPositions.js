@@ -4,6 +4,8 @@ import Typewriter from '../../../src/Typewriter.js';
 import Navbar_khedmouni from '../../navbar.js';
 import workWithUs from '../../assets/Images/job offer.png';
 import BasicStack from './stack.js';
+import icon from '../../assets/Images/greenredblue.png';
+import { WidthFullTwoTone } from '@mui/icons-material';
 
 const fullName = localStorage.getItem('fullName');
 
@@ -13,6 +15,7 @@ function Open_positions() {
      const ColorStyle = { color: 'black', fontWeight: 'bold'};
      const jobOffer = { backgroundColor: '#03D6AE', color: 'white'};
      const spontanuisApplication = { backgroundColor: '#5FA0FF', color: 'white'};
+     const deseign= { width: '10%'};
      
   return (
      <Container className="Description  pt-2 pb-5 mb-5 " >
@@ -43,6 +46,7 @@ function Open_positions() {
          <Row className='mt-5 pt-5'>
               <BasicStack/> 
         </Row>
+        
     </div>
     </Container>
   );
