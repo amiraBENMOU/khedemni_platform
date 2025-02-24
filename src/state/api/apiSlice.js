@@ -88,6 +88,15 @@ export const apiSlice = createApi({
            }),          
         
         }),
+
+        //upload pdf
+        uploadFile: builder.mutation({
+            query: (formData) => ({
+              url: '/position/upload',
+              method: 'POST',
+              body: formData,
+            }),
+          }),
    
 }),
 });
@@ -103,6 +112,7 @@ export const { useCreateContactMutation,
      useGetCompaniesQuery,
      useCreatePositionMutation,
      useGetPositionsQuery,
+     useUploadFileMutation,
 
      } = apiSlice;
   

@@ -4,9 +4,9 @@ import Typewriter from '../../../src/Typewriter.js';
 import Navbar_khedmouni from '../../navbar.js';
 import workWithUs from '../../assets/Images/job offer.png';
 import BasicStack from './stack.js';
-import UploadPdf from  './uploadPdf.js';
+import UploadPdf from './uploadPdf.js';
+import Footer from '../../footer.js';
 
-const fullName = localStorage.getItem('fullName');
 
 function Open_positions() {
      const ColorStyle2 = { color: 'black', fontWeight: 'normal' };
@@ -17,7 +17,7 @@ function Open_positions() {
      const deseign= { width: '10%'};
      
   return (
-     <Container className="Description  pt-2 pb-5 mb-5 " >
+     <Container className="Description  " >
 
          <div className='OpenPositions pb-5 mb-5 '>
             <Navbar_khedmouni />
@@ -45,15 +45,19 @@ function Open_positions() {
          <Row className='mt-5 pt-5'>
               <BasicStack/> 
         </Row>
-        <Row className='mt-5 pt-5'>
-            <Col lg={6}>
-            
+        <Row className='mt-1 pt-1'>
+            <Col lg={12}>
+              <UploadPdf/>
              </Col>
           </Row>
-
+          <>
+          <Footer/>
+          </>
     </div>
+    
     </Container>
+    
   );
-}
+};
 
 export default Open_positions;
