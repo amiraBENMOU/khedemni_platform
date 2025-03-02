@@ -204,7 +204,7 @@ function Admin_component() {
                     </li>
                 ))}
             </ul>
-            <h1> Add Your Company details : </h1>
+            <h1> Add a Company Details : </h1>
             <Container maxWidth="sm">
                 <Box
                     component="form"
@@ -425,6 +425,8 @@ function Admin_component() {
                         </Button>
                     </Box>
                 </Container>
+                <h1> Display CV's: </h1>
+                
             </div>
         </div>  
     );
