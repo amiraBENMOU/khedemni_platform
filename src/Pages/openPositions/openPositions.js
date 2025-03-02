@@ -17,7 +17,8 @@ function Open_positions() {
      const deseign= { width: '10%'};
      
   return (
-     <Container className="Description  " >
+   <>
+     <Container className="Description  w-100" >
 
          <div className='OpenPositions pb-5 mb-5 '>
             <Navbar_khedmouni />
@@ -49,14 +50,14 @@ function Open_positions() {
             <Col lg={12}>
               <UploadPdf/>
              </Col>
-          </Row>
-          <>
-          <Footer/>
-          </>
+        </Row>
+         
+                 
     </div>
-    
     </Container>
-    
+    <Footer/>
+    </>  
+   
   );
 };
 

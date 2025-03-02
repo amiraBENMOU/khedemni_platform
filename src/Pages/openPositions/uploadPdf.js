@@ -1,5 +1,5 @@
-/*
 import React, { useState } from 'react';
+import { Box, Card, CardContent, Typography, Button } from '@mui/material';
 import { useUploadFileMutation} from '../../state/api/apiSlice.js';
 
 const UploadPdf = () => {
@@ -20,22 +20,56 @@ const UploadPdf = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} />
-        <button type="submit" disabled={isLoading}>Upload</button>
-      </form>
-      {isSuccess && <p>File uploaded successfully!</p>}
-      {isError && <p>Error uploading file: {error.message}</p>}
-    </div>
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" minWidth={'80vw'}>
+    <Card
+        sx={{
+            backgroundColor: '#03D6AE',
+            color: 'white',
+            borderRadius: 4,
+            padding:2,
+            width: '60%',
+            textAlign: 'center',
+            boxShadow: 3,
+            marginTop:0,
+        }}
+    >
+       <CardContent>
+            /* Logo */
+                    <Box display="flex" justifyContent="center" mb={2}>
+                        <Box
+                            sx={{
+                                width: 50,
+                                height: 20,
+                                borderRadius: 2,
+                            }}
+                        />
+                    </Box>
+                    /* Title */
+                    <Typography variant="h5" fontWeight="bold">
+                        Find your Next  <br />
+                        <Typography component="span" color="blue" fontWeight="bold">
+                         professional challenge!
+                        </Typography>
+                    </Typography>
+       </CardContent>
+         <>
+             <form onSubmit={handleSubmit}>
+                <input type="file" onChange={handleFileChange} />
+                <button type="submit" disabled={isLoading}>Upload</button>
+             </form>
+                {isSuccess && <p>File uploaded successfully!</p>}
+                {isError && <p>Error uploading file: {error.message}</p>}
+         </>
+    </Card>
+    </Box>
   );
 };
 
 export default UploadPdf;
-*/
 
 
-import React ,{ useState } from 'react';
+
+/*import React ,{ useState } from 'react';
 import { Box, Card, CardContent, Typography, Button } from '@mui/material';
 import { useUploadFileMutation} from '../../state/api/apiSlice.js';
 
@@ -72,8 +106,8 @@ const UploadPdf = () => {
                 }}
             >
                 <CardContent>
-                    {/* Logo Placeholder */}
-                    <Box display="flex" justifyContent="center" mb={2}>
+                    /* Logo */
+                 /*   <Box display="flex" justifyContent="center" mb={2}>
                         <Box
                             sx={{
                                 width: 50,
@@ -83,16 +117,16 @@ const UploadPdf = () => {
                         />
                     </Box>
 
-                    {/* Title */}
-                    <Typography variant="h5" fontWeight="bold">
+                    /* Title */
+                 /*   <Typography variant="h5" fontWeight="bold">
                         Find your Next  <br />
                         <Typography component="span" color="blue" fontWeight="bold">
                          professional challenge!
                         </Typography>
                     </Typography>
 
-                    {/* Upload Button */}
-                    <Box mt={3}>
+                    /* Upload Button */
+                    /* <Box mt={3}>
             <form onSubmit={handleSubmit}>
               <input
                 type="file"
@@ -119,8 +153,8 @@ const UploadPdf = () => {
                  </form>
                 </Box>
 
-                    {/* File Info */}
-                    <Typography variant="body2" mt={2} color="white">
+                    /* File Info 
+                   /*  <Typography variant="body2" mt={2} color="white">
                         Recommended files: PDF, DOC or DOCX Max. 3MB
                     </Typography>
                 </CardContent>
@@ -130,3 +164,4 @@ const UploadPdf = () => {
 };
 
 export default UploadPdf;
+*/
