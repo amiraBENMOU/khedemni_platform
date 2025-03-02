@@ -78,7 +78,6 @@ const UploadPdf = () => {
                             sx={{
                                 width: 50,
                                 height: 20,
-                                background: 'linear-gradient(to right, #03D6AE, blue, red)',
                                 borderRadius: 2,
                             }}
                         />
@@ -86,34 +85,43 @@ const UploadPdf = () => {
 
                     {/* Title */}
                     <Typography variant="h5" fontWeight="bold">
-                        Trouvez votre prochain <br />
+                        Find your Next  <br />
                         <Typography component="span" color="blue" fontWeight="bold">
-                            défi professionnel !
+                         professional challenge!
                         </Typography>
                     </Typography>
 
                     {/* Upload Button */}
                     <Box mt={3}>
-                        <Button
-                            variant="contained"
-                            onClick={handleSubmit}
-                            onChange={handleFileChange}
-                            sx={{
-                                backgroundColor: '#26348E',
-                                color: 'white',
-                                borderRadius: 20,
-                                padding: '10px 20px',
-                                fontSize: '16px',
-                                '&:hover': { backgroundColor: '#1e2b6f' },
-                            }}
-                        >
-                            Déposer votre CV
-                        </Button>
-                    </Box>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="file"
+                onChange={handleFileChange}
+                id="file-input"
+                style={{ display: 'none' }}
+              />
+              <label htmlFor="file-input">
+                <Button
+                  variant="contained"
+                  component="span"
+                  sx={{
+                    backgroundColor: '#26348E',
+                    color: 'white',
+                    borderRadius: 20,
+                    padding: '10px 20px',
+                    fontSize: '16px',
+                    '&:hover': { backgroundColor: '#1e2b6f' },
+                  }}
+                >
+                  Upload Your CV
+                </Button>
+               </label>
+                 </form>
+                </Box>
 
                     {/* File Info */}
                     <Typography variant="body2" mt={2} color="white">
-                        Fichiers recommandés: PDF, DOC or DOCX Max. 3MB
+                        Recommended files: PDF, DOC or DOCX Max. 3MB
                     </Typography>
                 </CardContent>
             </Card>
