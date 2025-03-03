@@ -48,7 +48,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   }),
 );
 
-const AppBar = styled(MuiAppBar, {
+ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
   transition: theme.transitions.create(['margin', 'width'], {
@@ -77,20 +77,21 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 function Navbar_khedmouni() {
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const [darkMode, setDarkMode] = useState(false);
   const [signinText, setSigninText] = useState('Sign in');
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
     setSigninText(isAuthenticated ? 'Sign Out' : 'Sign In');
   }, []);
 
+  {/*
   const toggleLightDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
+  */}
 
   const handleSignInClick = () => {
     const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
@@ -108,7 +109,7 @@ function Navbar_khedmouni() {
   const handleAdminClick = () => {
     navigate('/admin');
   };
-
+ 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -116,6 +117,7 @@ function Navbar_khedmouni() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
 
   const navItemStyle = { fontSize: '20px' };
 
@@ -131,7 +133,6 @@ function Navbar_khedmouni() {
             edge="start"
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
-            <MenuIcon />
           </IconButton>
           <Navbar.Brand href="/" style={{
                 ...navItemStyle,
@@ -203,59 +204,10 @@ function Navbar_khedmouni() {
           </Nav>
         </Toolbar>
       </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <Typography variant="h6" component="div" style={{ textAlign: 'center', marginTop: '10px' }}>
-           Admin 
-        </Typography>
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      <Main open={open}>
-        <DrawerHeader />
-        {/* Main content goes here */}
-      </Main>
-    </Box>
+       
+      
+
+         </Box>
   );
 }
 
