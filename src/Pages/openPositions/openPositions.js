@@ -18,11 +18,11 @@ function Open_positions() {
      
   return (
    <>
-     <Container className="Description  w-100" >
+     <Container className="Description  w-100 " >
 
          <div className='OpenPositions pb-5 mb-5 '>
             <Navbar_khedmouni />
-            <Row className='workWithUs '>
+            <Row className='workWithUs mt-5 '>
                 <Col lg={6} >
                 <div className=" pt-5 mt-5">
                    <p className="mt-5 pt-5 text-start" style={TextStyle}>
