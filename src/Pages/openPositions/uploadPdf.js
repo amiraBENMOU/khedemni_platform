@@ -41,7 +41,7 @@ const UploadPdf = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh"  minWidth={'80vw'}>
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="50vh"  minWidth={'80vw'} pb={5}>
     <Card
         sx={{
             backgroundColor: '#03D6AE',
@@ -56,18 +56,7 @@ const UploadPdf = () => {
     >
        <CardContent>
             
-                    <Box display="flex" justifyContent="center" mb={2}>
-                    
-                        <Box
-                            sx={{
-                                width: 50,
-                                height: 20,
-                                borderRadius: 2,
-                            }}
-                        />
-                        
-                    </Box>
-                    
+                   
                     <Typography variant="h5" fontWeight="bold">
                         Find your Next  <br />
                         <Typography component="span" color="#4D55CC" fontWeight="bold">
@@ -92,7 +81,7 @@ const UploadPdf = () => {
                 Choose File
               </Button>
             </label>
-            {fileName && <Typography variant="body2" mt={2} color="white">{fileName}</Typography>}
+           
             <Button
               variant="contained"
               type="submit"
@@ -102,6 +91,7 @@ const UploadPdf = () => {
             >
               Upload
             </Button>
+            {fileName && <Typography variant="body2" mt={2} color="white">{fileName}</Typography>}
           </form>
           {isSuccess && <p>File uploaded successfully!</p>}
           {isError && <p>Error uploading file: {error.message}</p>}
