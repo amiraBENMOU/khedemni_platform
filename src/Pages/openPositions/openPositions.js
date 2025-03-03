@@ -6,6 +6,8 @@ import workWithUs from '../../assets/Images/job offer.png';
 import BasicStack from './stack.js';
 import UploadPdf from './uploadPdf.js';
 import Footer from '../../footer.js';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Open_positions() {
@@ -18,11 +20,12 @@ function Open_positions() {
      
   return (
    <>
+    
      <Container className="Description  w-100 " >
-
          <div className='OpenPositions pb-5 mb-5 '>
+         <ToastContainer/>
             <Navbar_khedmouni />
-            <Row className='workWithUs mt-5 '>
+            <Row className='workWithUs mt-5 pt-3'>
                 <Col lg={6} >
                 <div className=" pt-5 mt-5">
                    <p className="mt-5 pt-5 text-start" style={TextStyle}>

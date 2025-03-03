@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Card, CardContent, Typography, Button } from '@mui/material';
 import { useUploadFileMutation} from '../../state/api/apiSlice.js';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 
 const UploadPdf = () => {
@@ -41,7 +43,9 @@ const UploadPdf = () => {
   };
 
   return (
+     
     <Box display="flex" justifyContent="center" alignItems="center" minHeight="50vh"  minWidth={'80vw'} pb={5}>
+      
     <Card
         sx={{
             backgroundColor: '#03D6AE',
@@ -68,6 +72,7 @@ const UploadPdf = () => {
               <form onSubmit={handleSubmit}>
             <input
               type="file"
+              accept=".pdf, .doc, .docx"
               onChange={handleFileChange}
               id="file-input"
               style={{ display: 'none' }}
@@ -91,10 +96,11 @@ const UploadPdf = () => {
             >
               Upload
             </Button>
+            <p color="white" className='mt-3' > We accept only pdf , doc and docx files </p>
             {fileName && <Typography variant="body2" mt={2} color="white">{fileName}</Typography>}
           </form>
-          {isSuccess && <p>File uploaded successfully!</p>}
-          {isError && <p>Error uploading file: {error.message}</p>}
+          {isSuccess && toast.success("File uploaded successfully!" )}
+          {isError &&  toast.error ("Error uploading file: " + error.message)}
         </>
     </Card>
     </Box>
