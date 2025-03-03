@@ -186,15 +186,18 @@ function Navbar_khedmouni() {
             >
               Admin
             </Nav.Link>
-            <Nav.Link onClick={toggleLightDarkMode} style={navItemStyle}>
+            {/* 
+             <Nav.Link onClick={toggleLightDarkMode} style={navItemStyle}>
               {darkMode ? <MdDarkMode /> : <MdOutlineDarkMode />}
             </Nav.Link>
+            */}
             <Nav.Link
               onClick={handleSignInClick} // Toggle text on click
               style={{
                 ...navItemStyle
               }}
             >
+            
               <Button variant="primary">{signinText}</Button>
             </Nav.Link>
           </Nav>

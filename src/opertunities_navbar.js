@@ -91,10 +91,11 @@ const handleSignInClick = () => {
               >
                 Internships
               </Nav.Link>
-              
+              {/* 
               <Nav.Link onClick={toggleLightDarkMode} style={navItemStyle}>
                 {darkMode ? <MdDarkMode /> : <MdOutlineDarkMode />}
               </Nav.Link>
+              */}
               <Nav.Link
                 onClick={handleSignInClick} // Toggle text on click
                 style={{
