@@ -174,7 +174,7 @@ function Admin_component() {
             <Navbar_khedmouni />
             <ToastContainer />
 
-            <h1>Listing Contact Content</h1>
+            <h1 className='mt-5 pt-3'>Listing Contact Content</h1>
             <div>
                 <label>
                     Search by Name:
