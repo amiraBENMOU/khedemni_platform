@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useGetContactsQuery, useDeleteContactMutation, useCreateCompanyMutation, useGetCompaniesQuery,useCreatePositionMutation,useGetPositionsQuery} from '../../state/api/apiSlice';
+import { useGetContactsQuery, useDeleteContactMutation, useCreateCompanyMutation, useGetCompaniesQuery,useCreatePositionMutation,useGetPositionsQuery,useUploadFileMutation,useGetUploadFilesQuery} from '../../state/api/apiSlice';
 import Navbar_khedmouni from '../../navbar';
 import { useNavigate } from 'react-router-dom';
 import { getContactReportUrl } from '../../state/api/apiSlice';
-import { Container, TextField, Button, Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import {Typography, Container, TextField, Button, Box, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -65,6 +65,8 @@ function Admin_component() {
     const [loading, setLoading] = useState(false);
     const [logoUploadSuccess, setLogoUploadSuccess] = useState(false);
 
+   //get file  uploaded
+   const { data: files, error: uploadFilesError, isLoading: isUploadFilesLoading } = useGetUploadFilesQuery();   
     //fetch data for the user contacts
     useEffect(() => {
         const fetchUserContacts = async () => {
@@ -426,6 +428,19 @@ function Admin_component() {
                     </Box>
                 </Container>
                 <h1> Display CV's: </h1>
+                <Container maxWidth="sm" sx={{ mt: 4 }}>
+                    <Typography variant="h6">Uploaded Files:</Typography>
+                    {isUploadFilesLoading && <p>Loading...</p>}
+                    {uploadFilesError && <p>Error loading files: {uploadFilesError.message}</p>}
+                    <ul>
+                        {files?.map((file, index) => (
+                            <li key={index}>
+                                <a href={file.url} target="_blank" rel="noopener noreferrer">{file.fileName}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </Container>
+
                 
             </div>
         </div>  

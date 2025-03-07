@@ -96,7 +96,14 @@ export const apiSlice = createApi({
               method: 'POST',
               body: formData,
             }),
+            
           }),
+          getUploadFiles: builder.query({
+            query: () => ({
+            url: '/position/uploads',
+            method: 'GET',
+         }),
+        }),
    
 }),
 });
@@ -113,6 +120,7 @@ export const { useCreateContactMutation,
      useCreatePositionMutation,
      useGetPositionsQuery,
      useUploadFileMutation,
+     useGetUploadFilesQuery,
 
      } = apiSlice;
   
