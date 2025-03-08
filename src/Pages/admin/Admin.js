@@ -66,7 +66,11 @@ function Admin_component() {
     const [logoUploadSuccess, setLogoUploadSuccess] = useState(false);
 
    //get file  uploaded
-   const { data: files, error: uploadFilesError, isLoading: isUploadFilesLoading } = useGetUploadFilesQuery();   
+    //file upload
+    const [uploadFile, { isLoading: isUploading, isSuccess, isError, error: uploadError }] = useUploadFileMutation();
+    const { data: filesData, error: uploadFilesError, isLoading: isUploadFilesLoading } = useGetUploadFilesQuery();
+    const files = Array.isArray(filesData) ? filesData : []; 
+    
     //fetch data for the user contacts
     useEffect(() => {
         const fetchUserContacts = async () => {

@@ -91,10 +91,10 @@ export const apiSlice = createApi({
 
         //upload pdf
         uploadFile: builder.mutation({
-            query: (formData) => ({
+            query: (file) => ({
               url: '/position/upload',
               method: 'POST',
-              body: formData,
+              body: file,
             }),
             
           }),
