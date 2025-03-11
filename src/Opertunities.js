@@ -6,7 +6,7 @@ import partTime from './assets/Images/partTimeJob.jpg';
 import internships from './assets/Images/intership.jpg';
 import { useInView } from 'react-intersection-observer'; // Import the hook
 import { useNavigate } from 'react-router-dom';
-import { TbBackground } from 'react-icons/tb';
+
 
 function Opertunities() {
   const TextStyle = { fontSize: '20px' };
@@ -104,7 +104,7 @@ function Opertunities() {
              onMouseLeave={() => setHoveredElement(null)}
              onClick={handleRemoteJobClick}
           >
-            Part-Time Jobs
+            Master Projects Opertunities
           </p>
         </Col>
 

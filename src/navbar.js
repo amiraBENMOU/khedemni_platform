@@ -160,9 +160,9 @@ function Navbar_khedmouni() {
                 Our Opportunities
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Remote Jobs</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Part-Time Jobs</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Internships</Dropdown.Item>
+                <Dropdown.Item  href="/remote">Remote Jobs</Dropdown.Item>
+                <Dropdown.Item href="/remote">Part-Time Jobs</Dropdown.Item>
+                <Dropdown.Item href="/remote">Internships</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
            

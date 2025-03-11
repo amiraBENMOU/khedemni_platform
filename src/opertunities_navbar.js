@@ -14,7 +14,11 @@ function Navbar_khedmouni() {
   
 //navigate 
 const navigate = useNavigate();
-//
+//natigate to the remote job page
+const handleRemoteJobClick = () => {
+    navigate('/remote');
+  };
+
 const handleAdminClick = () => {
   navigate('/admin');
 };
@@ -65,7 +69,7 @@ const handleSignInClick = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link
-                href="/remote"
+                onClick={handleRemoteJobClick}
                 style={{
                   ...navItemStyle,
                   color: location.pathname === "/remote" ? "#5FA0FF" : "black", // Highlight when on Home page
@@ -74,16 +78,16 @@ const handleSignInClick = () => {
                 Remote Jobs
               </Nav.Link>
               <Nav.Link
-                href="/part-time"
+                 onClick={handleRemoteJobClick}
                 style={{
                   ...navItemStyle,
-                  color: location.hash === "/part-time" ? "#5FA0FF" : "black",
+                  color: location.hash === "/pfe" ? "#5FA0FF" : "black",
                 }}
               >
-                Part-Time Jobs
+                Master project opertunities
               </Nav.Link>
               <Nav.Link
-                href="/internships"
+                 onClick={handleRemoteJobClick}
                 style={{
                   ...navItemStyle,
                   color: location.hash === "/interships" ? "#5FA0FF" : "black",
