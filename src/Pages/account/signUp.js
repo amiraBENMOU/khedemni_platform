@@ -66,7 +66,7 @@ function SignUp() {
       const response = await signUp(formData).unwrap();
       console.log('Sign Up Success:', response);
       toast.success('Sign Up Successful!');
-      navigate('/');
+      navigate('/signIn');
     } catch (error) {
       console.error('Failed to sign up:', error);
       toast.error('Failed to sign up. Please try again.');
